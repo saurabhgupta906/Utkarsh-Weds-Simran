@@ -26,8 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" fetchpriority="high" href="assets/couple-close.jpg" media="(max-width:799.98px)">
-<link rel="preload" as="image" fetchpriority="high" href="assets/couple-full.jpg" media="(min-width:800px)">
+<link rel="preload" as="image" fetchpriority="high" href="assets/couple-full.jpg">
 <style>
 :root{--ivory:#FFF9EF;--cream:#F7EDDC;--burgundy:#731E30;--wine:#8B3444;--gold:#B68A42;--gold-dark:#805719;--gold-text:#8C6A32;--gold-muted:#987849;--rose:#D8A3A7;--blush:#EFDDD8;--sage:#89967A;--brown:var(--gold-dark);--ink:var(--gold-text);
 --fh:'Cormorant Garamond',Georgia,serif;--fb:'Manrope','Noto Sans Devanagari',sans-serif;
@@ -78,6 +77,13 @@ body[data-lang=hi] .kicker{letter-spacing:.08em}
 }
 .mini-btn{display:inline-flex;min-height:40px;padding:8px 16px;font-family:var(--fb);font-weight:600;font-size:12.5px;color:var(--burgundy);border:1px solid rgba(182,138,66,.55);border-radius:999px;transition:.25s}
 .mini-btn:hover{background:rgba(214,169,77,.16)}
+/* icon-only variant: the calendar rows carry the meaning in the label itself,
+   so the button needs no text — a round gold-ringed glyph is enough. */
+.mini-btn.ic{display:inline-grid;place-items:center;width:44px;height:44px;min-height:0;padding:0;border-radius:50%;background:rgba(255,253,246,.85);box-shadow:0 6px 16px -10px rgba(88,54,44,.55)}
+.mini-btn.ic svg{width:22px;height:22px;color:var(--gold-dark);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.mini-btn.ic:hover{background:rgba(214,169,77,.2);border-color:rgba(182,138,66,.9);box-shadow:0 10px 20px -10px rgba(88,54,44,.6)}
+.mini-btn.ic:hover svg{transform:scale(1.08)}
+.mini-btn.ic:active{transform:scale(.94)}
 #app{opacity:1;visibility:visible}#app.preopen{opacity:0;visibility:hidden}
 .ch{position:relative;z-index:2;padding:clamp(70px,11vw,116px) 22px}
 .wrap{max-width:660px;margin:0 auto}
@@ -257,7 +263,7 @@ body[data-lang=hi] .env-for{letter-spacing:.05em}
 .hero-photo picture{display:block;width:100%;height:100%}
 .px{position:relative;overflow:hidden}
 .px img{width:100%;height:112%;margin-top:-6%;object-fit:cover;will-change:transform}
-.hero-photo img{height:100%;margin-top:0;object-position:50% top;filter:saturate(.98) contrast(.98) sepia(.04)}
+.hero-photo img{height:100%;margin-top:0;object-position:55% top;filter:saturate(.98) contrast(.98) sepia(.04)}
 .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(48,18,24,.2),rgba(48,18,24,.03) 55%,transparent)}
 .hero-content{margin:-110px auto 0;position:relative;z-index:3;padding:0 26px 70px;color:var(--brown);text-align:center;max-width:640px}
 .hero-eyebrow{font-family:var(--fh);font-style:italic;font-size:clamp(16px,4.4vw,20px);color:#79594B}
@@ -292,12 +298,9 @@ body[data-lang=hi] .letter-card p{font-size:17px}
 .letter-div{display:none;width:44%;margin:26px auto;height:1px;background:linear-gradient(90deg,transparent,rgba(182,138,66,.55),transparent)}
 body[data-lang=dual] .letter-div{display:block}
 .ed-block{position:relative;margin:44px 0 30px}
-.arch-photo{width:88%;margin-left:auto;padding:8px;background:#FFFDF6;border:1px solid rgba(182,138,66,.6);border-radius:250px 250px 20px 20px;box-shadow:0 26px 50px -18px rgba(88,54,44,.4)}
-.arch-photo .px{border-radius:244px 244px 14px 14px}
-.arch-photo img{height:auto;aspect-ratio:3/4;margin-top:0;border-radius:inherit;object-position:50% 18%;filter:saturate(.95) sepia(.06)}
-.polaroid{position:absolute;left:-1%;bottom:-34px;width:42%;background:#FFFDF6;padding:8px 8px 30px;box-shadow:0 18px 34px -12px rgba(88,54,44,.45);transform:rotate(-4deg);border:1px solid rgba(182,138,66,.25)}
-.polaroid img{height:auto;aspect-ratio:1/1;margin-top:0;object-position:50% 16%;filter:saturate(.93) sepia(.1)}
-.pol-cap{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-family:'Great Vibes',cursive;font-size:16px;color:#8a6a58}
+.venue-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cinema{width:92%;margin-left:auto;padding:6px;background:#FFFDF6;border:1px solid rgba(182,138,66,.6);border-radius:12px;box-shadow:0 26px 50px -18px rgba(88,54,44,.4)}
+.cinema video{width:100%;height:auto;aspect-ratio:16/9;margin-top:0;object-fit:cover;display:block;border-radius:7px;filter:saturate(.95) sepia(.06)}
 .faded-bot{position:absolute;right:8px;top:-34px;width:140px;color:var(--sage);opacity:.3;transform:rotate(15deg)}
 .hearts-text{text-align:center;margin-top:54px}
 .ht{font-family:var(--fh);font-weight:500;font-size:clamp(22px,5.6vw,30px);color:var(--brown);line-height:1.55}
@@ -358,6 +361,8 @@ body[data-lang=hi] .ms-date span{letter-spacing:.04em}
 .cal-q{font-size:12.5px;color:var(--gold-muted);font-style:italic;line-height:1.5;margin:5px 0 0}
 .cal-btns{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
 .cal-all-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.cal-all-btn{gap:10px;padding-left:20px}
+.cal-all-btn .btn-ic{width:19px;height:19px;flex:none;color:currentColor;opacity:.92}
 .ch-count{background:linear-gradient(170deg,#6E1C2C,#731E30 55%,#65192A)}
 .cd-label{text-align:center;font-family:var(--fh);font-weight:600;font-size:15px;letter-spacing:.3em;color:#EBCF9F;text-transform:uppercase}
 body[data-lang=hi] .cd-label{letter-spacing:.08em}
@@ -371,7 +376,6 @@ body[data-lang=hi] .cd-cell span{letter-spacing:.04em}
 .cd-baraat{text-align:center;font-family:var(--fh);font-size:15px;color:#D8A3A7;margin-top:14px}
 .cd-hash{text-align:center;font-family:var(--fh);font-size:13px;letter-spacing:.12em;color:#C79A50;margin-top:24px}
 .page-timer{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(12px + env(safe-area-inset-bottom));z-index:140;width:min(218px,calc(100vw - 24px));margin:0;padding:9px 10px 8px;border:1px solid rgba(220,180,111,.68);border-radius:13px;background:linear-gradient(145deg,rgba(115,30,48,.96),rgba(88,19,35,.96));box-shadow:0 12px 28px -12px rgba(72,20,29,.7),inset 0 0 0 1px rgba(255,249,239,.07);backdrop-filter:blur(8px);text-align:center;transition:bottom .35s,opacity .35s,transform .35s}
-body.dock .page-timer{bottom:calc(76px + env(safe-area-inset-bottom))}
 .page-timer-label{display:block;margin-bottom:6px;font-family:var(--fh);font-weight:700;font-size:8px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;color:#EBCF9F;white-space:nowrap}
 body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb);font-size:8px;letter-spacing:0}
 .page-timer-grid{display:grid;grid-template-columns:repeat(4,1fr)}
@@ -451,9 +455,9 @@ body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb
 .closing-reopen{margin-top:30px;opacity:0;pointer-events:none}#closingScene.run.done .closing-reopen{animation:closingText .55s ease forwards;pointer-events:auto}
 @keyframes closingText{to{opacity:1;transform:none}}@keyframes closingSettle{to{transform:none}}@keyframes paperFold{0%{opacity:0;transform:translateY(-68%) scale(1.25)}15%{opacity:1}45%{transform:translateY(-42%) scale(1)}70%{transform:translateY(-17%) scale(.92,.68)}100%{opacity:1;transform:translateY(8%) scale(.88,.5)}}@keyframes flapClose{0%{transform:rotateX(180deg);z-index:2}49%{z-index:2}50%{z-index:6}100%{transform:rotateX(0);z-index:6}}@keyframes sealClose{70%{opacity:1;transform:scale(.88)}100%{opacity:1;transform:scale(1)}}
 @media(prefers-reduced-motion:reduce){#closingScene.run .closing-message,#closingScene.run .closing-envelope,#closingScene.run .closing-paper,#closingScene.run .closing-flap,#closingScene.run .closing-seal{animation-duration:.01ms;animation-delay:0s}}
-/* bottom padding clears the floating countdown timer and quick-dock, which are fixed
+/* bottom padding clears the floating countdown timer, which is fixed
    and would otherwise sit on top of the licence credit on the last line. */
-.foot{text-align:center;padding:60px 22px calc(172px + env(safe-area-inset-bottom));position:relative;z-index:2}
+.foot{text-align:center;padding:60px 22px calc(120px + env(safe-area-inset-bottom));position:relative;z-index:2}
 .foot-mono{font-family:var(--fh);font-size:14px;letter-spacing:4px;color:var(--gold)}
 .foot-mono i{font-style:italic;font-size:.85em}
 .foot-script{font-family:'Noto Serif Devanagari',serif;font-size:22px;color:var(--burgundy);margin:8px 0 2px}
@@ -468,14 +472,9 @@ body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb
 #musicBtn.vis{display:grid}
 #musicBtn.on{background:var(--burgundy);color:var(--ivory)}
 #musicBtn svg{width:20px;height:20px}
-body.dock #musicBtn{bottom:calc(80px + env(safe-area-inset-bottom))}
 #musicPrompt{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom));z-index:160;width:min(92vw,420px);background:linear-gradient(168deg,#FFFDF6,#F8F0DE);border:1px solid rgba(182,138,66,.5);border-radius:14px;box-shadow:0 18px 40px -12px rgba(88,54,44,.45);padding:22px 22px 18px;text-align:center}
 .mp-q{font-family:var(--fh);font-style:italic;font-size:16.5px;color:#4E3B33}
 .mp-btns{display:flex;gap:12px;justify-content:center;margin-top:18px}
-.quick-dock{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));transform:translate(-50%,120%);z-index:145;display:flex;gap:4px;padding:6px;background:rgba(255,249,239,.92);backdrop-filter:blur(12px);border:1px solid rgba(182,138,66,.35);border-radius:999px;box-shadow:0 12px 32px rgba(72,34,28,.22);transition:transform .45s cubic-bezier(.22,.61,.36,1),opacity .3s;opacity:0;visibility:hidden}
-.quick-dock.show{transform:translate(-50%,0);opacity:1;visibility:visible}
-.quick-dock a,.quick-dock button{min-height:42px;padding:8px 18px;border-radius:999px;font:600 12px var(--fb);color:var(--burgundy);text-decoration:none;white-space:nowrap}
-.quick-dock a:hover,.quick-dock button:hover{background:rgba(182,138,66,.14)}
 #backdrop{position:fixed;inset:0;z-index:205;background:rgba(57,28,36,.45);opacity:0;pointer-events:none;transition:opacity .4s}
 #backdrop.on{opacity:1;pointer-events:auto}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:210;width:min(100%,540px);margin:0 auto;background:linear-gradient(170deg,#FFFDF6,#F7EDDC);border-radius:18px 18px 0 0;box-shadow:0 -12px 40px rgba(57,28,36,.25);padding:14px 22px calc(24px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .5s cubic-bezier(.3,.1,.2,1);max-height:86vh;overflow:auto}
@@ -504,22 +503,21 @@ body[data-lang=hi] .f-row label{letter-spacing:.03em}
 .gen-msg{white-space:pre-wrap;font-size:12.5px;color:#6E5142;background:#FFFDF6;border:1px dashed rgba(182,138,66,.5);border-radius:6px;padding:12px;max-height:220px;overflow:auto}
 /* Shared high-contrast antique-gold print palette for English and Hindi. */
 .gate-title,.gate-dear,.hero-content,.letter-card p,.l-sender,.ht,.stop-label b,.venue-name,.note-inner p,#rMsg,.fam-name,.mp-q,.sheet h3,.f-row input,.f-row select,.gen-head h2{color:var(--gold-dark)}
-.pill span,.mini-inv,.hero-eyebrow,.hero-personal,.l-sign span,.pol-cap,.ms-day,.ms-q,.stop-label span,.caption,.venue-addr,.cal-info span,.note-hint,.note-inner .n-sign span,.rsvp-sub,.geo-note,.rsvp-done .rd-m,.fam-addr,.foot-line,#langPill button,.sheet-close,.f-url,.gen-msg{color:var(--gold-muted)}
+.pill span,.mini-inv,.hero-eyebrow,.hero-personal,.l-sign span,.ms-day,.ms-q,.stop-label span,.caption,.venue-addr,.cal-info span,.note-hint,.note-inner .n-sign span,.rsvp-sub,.geo-note,.rsvp-done .rd-m,.fam-addr,.foot-line,#langPill button,.sheet-close,.f-url,.gen-msg{color:var(--gold-muted)}
 input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
 @media(min-width:800px){
  .hero-photo{height:92svh;min-height:0;isolation:isolate;background:#3c2828}
- .hero-photo::before{content:'';position:absolute;z-index:0;inset:-28px;background:url('assets/couple-full.jpg') center 32%/cover no-repeat;filter:blur(20px);opacity:.48;transform:scale(1.06)}
+ .hero-photo::before{content:'';position:absolute;z-index:0;inset:-28px;background:url('assets/couple-full.jpg') 55% 32%/cover no-repeat;filter:blur(20px);opacity:.48;transform:scale(1.06)}
  .hero-photo::after{z-index:2}
  .hero-photo picture,.hero-photo>img{position:relative;z-index:1}
- .hero-photo img{width:100%;height:100%;object-fit:contain;object-position:center top}
+ .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:55% top}
  .ch-final .hero-photo{width:100%}
 }
 @media(max-width:560px){
  .hero-photo{height:61svh;min-height:430px}
- .hero-photo img{object-position:52% top}
+ .hero-photo img{object-position:55% top}
  .hero-content{margin-top:-78px;padding-bottom:56px}
  .hero-names .only-en{font-size:clamp(55px,15vw,78px)}
- .quick-dock a,.quick-dock button{padding:8px 14px;font-size:11.5px}
  .env-band span{font-size:14px;letter-spacing:.16em}
  .wax-seal{width:88px;height:88px;margin-left:-44px;top:calc(56% - 44px)}
 }
@@ -546,6 +544,7 @@ input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
 <symbol id="i-ganesh" viewBox="0 0 87 87"><path fill="currentColor" d="m 67.301793,29.785002 c -2.57,-1.802 -6.407,0.056 -9.292,2.827 -0.479,-1.583 -1.475,-3.249 -3.023,-4.682 0.002,-0.009 0.004,-0.019 0.006,-0.028 0.382,-2.249 -1.305,-6.376 -6.141,-8.094 -0.159,-0.056 -0.318,-0.109 -0.479,-0.161 -0.062,-1.207 -0.857,-2.578 -2.623,-3.225 -0.135,-0.047 -0.27,-0.091 -0.406,-0.131 0.266,-0.649 0.4,-1.292 0.4,-1.918 0,-2.597 -2.288,-4.6350004 -2.386,-4.7210004 -0.188,-0.165 -0.47,-0.165 -0.66,0 -0.097,0.086 -2.385,2.1240004 -2.385,4.7210004 0,0.628 0.134,1.271 0.399,1.919 -0.138,0.041 -0.275,0.084 -0.411,0.132 -1.761,0.645 -2.554,2.015 -2.617,3.222 -0.161,0.052 -0.322,0.105 -0.482,0.162 -4.653,1.653 -6.383,5.51 -6.173,7.816 -1.746,1.498 -2.853,3.291 -3.367,4.987 -2.886,-2.771 -6.726,-4.63 -9.33,-2.797 -4.596,3.939 -7.336,8.116 -5.77,15.718 0.52,2.046 1.467,4.118 2.47,6.312 1.297,2.837 2.638,5.771 3.131,8.856 0.193,1.204 0.872,1.691 1.409,1.888 2.491,0.912 7.293,-2.404 9.738,-4.507 1.029,-0.885 2.17,-1.98 2.754,-2.915 0.41,0.958 0.819,2.879 -0.056,6.168 -0.043,0.163 -10e-4,0.337 0.111,0.463 0.112,0.125 0.28,0.185 0.447,0.16 0.101,-0.016 1.958,-0.321 3.283,-2.123 -0.044,7.702 2.359,12.17 7.872,15.439 1.97,1.17 4.146,1.727 6.297,1.727 4.131,0 8.167,-2.055 10.459,-5.766 1.357,-2.2 1.768,-4.788 1.152,-7.288 -0.264,-1.075 -0.704,-2.079 -1.296,-2.982 2.09,1.257 4.314,2.155 5.766,1.624 0.536,-0.196 1.215,-0.684 1.408,-1.888 0.493,-3.085 1.834,-6.019 3.131,-8.855 1.003,-2.194 1.95,-4.268 2.475,-6.336 1.563,-7.578 -1.177,-11.755 -5.811,-15.724 z m -24.273,-19.052 c 0.579,0.619 1.715,2.038 1.715,3.64 0,0.543 -0.132,1.111 -0.392,1.694 -0.875,-0.142 -1.771,-0.141 -2.649,0 -0.259,-0.581 -0.39,-1.149 -0.39,-1.694 10e-4,-1.602 1.137,-3.021 1.716,-3.64 z m -2.39,6.633 c 0.265,-0.093 0.534,-0.17 0.806,-0.231 0.054,-0.002 0.109,-0.013 0.162,-0.034 0.936,-0.188 1.903,-0.188 2.837,-0.002 0.056,0.023 0.113,0.035 0.171,0.037 0.27,0.061 0.535,0.136 0.797,0.228 1.147,0.421 1.748,1.222 1.916,1.986 -1.408,-0.354 -2.854,-0.532 -4.3,-0.532 -1.445,0 -2.891,0.177 -4.298,0.531 0.168,-0.764 0.767,-1.564 1.909,-1.983 z m -3.103,3.386 c 0.235,-0.083 0.472,-0.16 0.71,-0.231 0.061,-0.007 0.118,-0.024 0.169,-0.05 3.009,-0.871 6.23,-0.87 9.238,0.004 0.046,0.021 0.095,0.036 0.146,0.043 0.241,0.072 0.48,0.15 0.719,0.234 3.727,1.323 5.487,4.355 5.528,6.393 -1.053,-0.798 -2.307,-1.49 -3.77,-2.01 -2.381,-0.838 -4.882,-1.273 -7.432,-1.295 -0.003,0 -0.005,0 -0.008,0 v 0 c -0.002,0.001 -0.006,0 -0.009,0 -2.55,0.022 -5.05,0.458 -7.434,1.296 -1.281,0.455 -2.402,1.043 -3.368,1.718 0.189,-2.028 1.948,-4.837 5.511,-6.102 z m -1.808,5.326 c 2.278,-0.801 4.669,-1.218 7.109,-1.239 2.439,0.021 4.831,0.438 7.107,1.238 4.793,1.702 7.353,5.616 7.403,8.602 0.02,1.144 -0.34,1.976 -0.99,2.315 -1.27,-1.881 -3.208,-3.542 -6.08,-4.562 -2.382,-0.838 -4.884,-1.274 -7.435,-1.296 -0.002,0 -0.003,0 -0.005,0 -0.002,0 -0.004,0 -0.005,0 -2.552,0.022 -5.054,0.458 -7.438,1.296 -2.871,1.02 -4.808,2.68 -6.077,4.562 -0.652,-0.339 -1.011,-1.172 -0.992,-2.316 0.052,-2.985 2.611,-6.898 7.403,-8.6 z m -4.27,28.041 c 0.026,1.244 -6.938,7.28 -10.646,7.615 -1.001,0.092 -1.515,-0.276 -1.661,-1.19 -0.515,-3.22 -1.885,-6.216 -3.209,-9.114 -0.983,-2.152 -1.913,-4.185 -2.405,-6.12 -1.462,-7.101 1.119,-11.026 5.408,-14.706 0.525,-0.368 1.133,-0.531 1.79,-0.531 2.111,0 4.723,1.688 6.667,3.691 -0.046,0.307 -0.071,0.608 -0.076,0.899 -0.025,1.491 0.518,2.655 1.469,3.188 -1.639,2.955 -1.814,6.282 -1.463,8.497 0.583,3.675 2.331,6.054 4.127,7.57 -0.014,0.064 -0.015,0.133 -0.001,0.201 z m 4.482,3.261 c -0.03,0.044 -0.054,0.093 -0.069,0.146 -0.573,1.98 -1.854,2.841 -2.685,3.201 0.592,-2.728 0.322,-4.531 -0.072,-5.633 1.3,0.773 2.429,1.131 2.902,1.259 -0.029,0.348 -0.054,0.691 -0.076,1.027 z m 24.72,6.807 c 0.55,2.237 0.183,4.554 -1.033,6.523 -3.199,5.183 -10.107,6.844 -15.395,3.705 -6.605,-3.919 -8.453,-9.757 -6.817,-21.543 0.038,-0.273 -0.153,-0.525 -0.426,-0.563 -0.023,-0.003 -0.046,-0.005 -0.069,-0.005 -0.246,0 -0.46,0.181 -0.495,0.432 -0.125,0.901 -0.23,1.77 -0.315,2.607 -1.403,-0.408 -6.717,-2.388 -7.791,-9.153 -0.156,-0.987 -1.277,-9.729 7.409,-12.814 2.277,-0.801 4.669,-1.218 7.11,-1.239 2.44,0.021 4.832,0.438 7.107,1.239 8.693,3.087 7.566,11.827 7.409,12.814 -1.07,6.746 -6.407,8.707 -7.961,9.139 -0.081,-0.855 -0.179,-1.757 -0.296,-2.594 -0.039,-0.274 -0.296,-0.46 -0.564,-0.426 -0.273,0.038 -0.464,0.291 -0.426,0.564 0.253,1.815 0.419,3.95 0.504,5.228 -0.96,0.62 -1.799,1.453 -2.434,2.479 -0.895,1.449 -1.164,3.154 -0.76,4.802 0.41,1.667 1.459,3.073 2.953,3.96 2.494,1.481 5.753,0.694 7.268,-1.753 0.598,-0.969 0.777,-2.108 0.507,-3.21 -0.274,-1.114 -0.975,-2.054 -1.973,-2.646 -1.679,-0.998 -3.877,-0.467 -4.896,1.183 -0.145,0.234 -0.072,0.543 0.163,0.688 0.234,0.143 0.543,0.072 0.688,-0.163 0.734,-1.188 2.318,-1.569 3.535,-0.849 0.765,0.455 1.302,1.174 1.511,2.025 0.207,0.839 0.069,1.708 -0.386,2.446 -1.229,1.986 -3.878,2.622 -5.907,1.419 -1.262,-0.749 -2.146,-1.935 -2.491,-3.339 -0.341,-1.385 -0.113,-2.819 0.64,-4.038 0.599,-0.97 1.406,-1.742 2.333,-2.295 0.015,-0.009 0.029,-0.017 0.044,-0.026 2.154,-1.265 4.938,-1.352 7.232,0.011 2.036,1.21 3.465,3.125 4.022,5.392 z m -5.345,-7.051 c -0.697,-0.205 -1.409,-0.312 -2.12,-0.327 0.081,-0.721 0.246,-1.261 0.411,-1.645 0.387,0.623 1.023,1.316 1.709,1.972 z m -2.713,-2.155 c -0.182,0.476 -0.344,1.092 -0.417,1.868 -0.902,0.094 -1.786,0.337 -2.608,0.72 -0.026,-0.371 -0.058,-0.788 -0.095,-1.233 0.549,-0.15 1.759,-0.538 3.12,-1.355 z m 19.539,-9.694 c -0.498,1.958 -1.427,3.991 -2.411,6.145 -1.324,2.897 -2.693,5.893 -3.209,9.112 -0.145,0.912 -0.646,1.28 -1.66,1.19 -3.707,-0.335 -10.672,-6.371 -10.646,-7.603 0.02,-0.095 0.01,-0.191 -0.023,-0.277 1.822,-1.52 3.576,-3.884 4.151,-7.507 0.353,-2.216 0.178,-5.543 -1.462,-8.499 0.95,-0.533 1.493,-1.696 1.468,-3.186 -0.005,-0.292 -0.03,-0.592 -0.076,-0.899 2.549,-2.625 6.24,-4.713 8.418,-3.189 4.325,3.709 6.907,7.634 5.45,14.713 z"/></symbol>
 <symbol id="i-envelope" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="6" y="11" width="28" height="19" rx="3"/><path d="M7.6 13.6 L20 22.6 L32.4 13.6"/></g></symbol>
 <symbol id="i-note" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 30 V10 L30 7 V27"/><circle cx="11.5" cy="30" r="4.5"/><circle cx="25.5" cy="27" r="4.5"/></g></symbol>
+<symbol id="i-cal-add" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="9" width="27" height="24.5" rx="4"/><path d="M6.5 16.2 H33.5"/><path d="M13.6 5.6 V11.6 M26.4 5.6 V11.6"/><path d="M20 20.6 V29 M15.8 24.8 H24.2"/></g></symbol>
 <symbol id="i-phone" viewBox="0 0 40 40"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M13 7c2 0 3 1 3 3 0 1.6-.8 2-1.6 2.6C18 20 20 22 25.4 25.6c.6-.8 1-1.6 2.6-1.6 2 0 3 1 3 3 0 3-2 5-5 5C17 32 8 23 8 12c0-3 2-5 5-5Z"/></symbol>
 <symbol id="i-corner" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M4 24 C4 12 12 4 24 4"/><path d="M10 30 C10 20 20 10 30 10" opacity=".6"/><circle cx="24" cy="10" r="1.4"/><circle cx="10" cy="24" r="1.4"/><path d="M16 14 C18 10 22 10 23 14 C20 17 17 17 16 14 Z"/></g></symbol>
 <symbol id="i-pressed" viewBox="0 0 96 96"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M20 90 C30 62 44 40 62 26"/><path d="M34 66 C28 60 30 52 38 50 C44 54 42 62 34 66 Z"/><path d="M46 48 C40 42 42 34 50 32 C56 36 54 44 46 48 Z"/><use href="#i-marigold" x="44" y="2" width="46" height="46"/></g></symbol>
@@ -623,11 +622,8 @@ input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
 
 <section class="ch ch-hero" id="ch-reveal">
   <div class="hero-photo px">
-    <picture>
-      <source media="(min-width:800px)" srcset="assets/couple-full.jpg">
-      <img id="heroImg" src="assets/couple-close.jpg" onerror="this.onerror=null;this.src='https://z-cdn-media.chatglm.cn/files/61c55fc6-4866-4bbd-a3fe-2971c06fade9.jpeg?auth_key=1890741655-b5e156b6695b4137bdc7bb348add1883-0-cce713ec52509d3ce1a2b1f06183f898'" alt="Utkarsh and Simran in traditional wedding attire, Simran holding a bouquet" fetchpriority="high" decoding="async">
-    </picture>
-  </div>    
+    <img id="heroImg" src="assets/couple-full.jpg" onerror="this.onerror=null;this.src='https://z-cdn-media.chatglm.cn/files/61c55fc6-4866-4bbd-a3fe-2971c06fade9.jpeg?auth_key=1890741655-b5e156b6695b4137bdc7bb348add1883-0-cce713ec52509d3ce1a2b1f06183f898'" alt="Utkarsh and Simran in traditional wedding attire, Simran holding a bouquet" fetchpriority="high" decoding="async">
+  </div>
   <div class="hero-veil"></div>
   <div class="hero-content">
     <div class="rv">
@@ -674,13 +670,37 @@ input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
   </div>
 </section>
 
+<section class="ch ch-blush" id="ch-calendar">
+  <div class="wrap">
+    <p class="kicker rv" data-i18n="cal_kicker"></p>
+    <h2 class="h2 rv" data-i18n="cal_title"></h2>
+    <p class="caption rv" data-i18n="cal_sub"></p>
+    <svg class="cal-ill rv" viewBox="0 0 220 170" aria-hidden="true">
+      <rect x="16" y="18" width="188" height="140" rx="10" fill="#FFFDF6" stroke="#B68A42" stroke-width="1.2"/>
+      <circle cx="56" cy="18" r="4" fill="#F7EDDC" stroke="#B68A42" stroke-width="1.2"/><circle cx="164" cy="18" r="4" fill="#F7EDDC" stroke="#B68A42" stroke-width="1.2"/>
+      <path d="M16 46 H204" stroke="rgba(182,138,66,.4)"/>
+      <text x="110" y="38" text-anchor="middle" font-size="16" fill="#731E30" font-family="Cormorant Garamond,serif" letter-spacing="3">NOVEMBER 2026</text>
+      <g id="calDots" fill="#D9C49A"></g>
+      <path d="M86 119 c-2.2-2.4-5.4-.9-5.4 1.8 0 2 2.4 3.9 5.4 6.3 3-2.4 5.4-4.3 5.4-6.3 0-2.7-3.2-4.2-5.4-1.8 Z" fill="#8B3444"/>
+    </svg>
+    <ul class="cal-list rv">
+      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-dhol"/></svg></span><div class="cal-info"><b data-i18n="ev_haldi_t"></b><span data-i18n="cal_date_haldi"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_haldi_q"></p></div><div class="cal-btns"><button class="mini-btn ic" data-act="ics:haldi" data-i18n-aria="add_ics"><svg aria-hidden="true"><use href="#i-cal-add"/></svg></button></div></li>
+      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-gate"/></svg></span><div class="cal-info"><b data-i18n="ev_wedding_t"></b><span data-i18n="cal_date_wedding"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_wedding_q"></p></div><div class="cal-btns"><button class="mini-btn ic" data-act="ics:wedding" data-i18n-aria="add_ics"><svg aria-hidden="true"><use href="#i-cal-add"/></svg></button></div></li>
+      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-dhol"/></svg></span><div class="cal-info"><b data-i18n="baraat_title"></b><span data-i18n="cal_date_baraat"></span><p class="cal-q" data-i18n="baraat_caption"></p></div><div class="cal-btns"><button class="mini-btn ic" data-act="ics:baraat" data-i18n-aria="add_ics"><svg aria-hidden="true"><use href="#i-cal-add"/></svg></button></div></li>
+      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-home"/></svg></span><div class="cal-info"><b data-i18n="ev_bride_t"></b><span data-i18n="cal_date_bride"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_bride_q"></p></div><div class="cal-btns"><button class="mini-btn ic" data-act="ics:bride" data-i18n-aria="add_ics"><svg aria-hidden="true"><use href="#i-cal-add"/></svg></button></div></li>
+    </ul>
+    <div class="cal-all-row rv">
+      <button class="btn btn-solid cal-all-btn" data-act="ics:all"><svg class="btn-ic" aria-hidden="true"><use href="#i-cal-add"/></svg><span data-i18n="cal_all"></span></button>
+    </div>
+  </div>
+</section>
+
 <section class="ch" id="ch-hearts">
   <div class="wrap">
     <p class="kicker rv" data-i18n="hearts_kicker"></p>
     <div class="ed-block rv d2">
       <svg class="faded-bot" aria-hidden="true"><use href="#i-pressed"/></svg>
-      <div class="arch-photo px"><img src="assets/couple-full.jpg" onerror="this.onerror=null;this.src='https://z-cdn-media.chatglm.cn/files/912c3e90-3b91-439e-8d38-f5a4809c8d39.jpeg?auth_key=1890741655-ea759960832c4cc89a76489cdab644f5-0-421db8cfe4468bd9d704dc67c4a71f6f'" alt="Utkarsh and Simran in traditional wedding attire" loading="lazy" decoding="async"></div>
-      <div class="polaroid"><img src="assets/couple-full.jpg" onerror="this.onerror=null;this.src='https://z-cdn-media.chatglm.cn/files/912c3e90-3b91-439e-8d38-f5a4809c8d39.jpeg?auth_key=1890741655-ea759960832c4cc89a76489cdab644f5-0-421db8cfe4468bd9d704dc67c4a71f6f'" alt="A candid moment of the couple" loading="lazy" decoding="async"><span class="pol-cap">Utkarsh &amp; Simran</span></div>
+      <div class="cinema px"><video src="assets/merged.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Utkarsh and Simran — cinematic wedding film"></video></div>
     </div>
     <div class="hearts-text rv">
       <p class="ht only-en">Two hearts.</p><p class="ht only-en">Two families.</p><p class="ht only-en em">One beautiful forever.</p>
@@ -731,31 +751,10 @@ input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
       <h3 class="venue-name">Narayan Vatika</h3>
       <address class="venue-addr">Mutthi Ganj<br>Prayagraj, Uttar Pradesh · India</address>
       <p class="venue-date" data-i18n="venue_date"></p>
-    </div>
-  </div>
-</section>
-
-<section class="ch ch-blush" id="ch-calendar">
-  <div class="wrap">
-    <p class="kicker rv" data-i18n="cal_kicker"></p>
-    <h2 class="h2 rv" data-i18n="cal_title"></h2>
-    <p class="caption rv" data-i18n="cal_sub"></p>
-    <svg class="cal-ill rv" viewBox="0 0 220 170" aria-hidden="true">
-      <rect x="16" y="18" width="188" height="140" rx="10" fill="#FFFDF6" stroke="#B68A42" stroke-width="1.2"/>
-      <circle cx="56" cy="18" r="4" fill="#F7EDDC" stroke="#B68A42" stroke-width="1.2"/><circle cx="164" cy="18" r="4" fill="#F7EDDC" stroke="#B68A42" stroke-width="1.2"/>
-      <path d="M16 46 H204" stroke="rgba(182,138,66,.4)"/>
-      <text x="110" y="38" text-anchor="middle" font-size="16" fill="#731E30" font-family="Cormorant Garamond,serif" letter-spacing="3">NOVEMBER 2026</text>
-      <g id="calDots" fill="#D9C49A"></g>
-      <path d="M86 119 c-2.2-2.4-5.4-.9-5.4 1.8 0 2 2.4 3.9 5.4 6.3 3-2.4 5.4-4.3 5.4-6.3 0-2.7-3.2-4.2-5.4-1.8 Z" fill="#8B3444"/>
-    </svg>
-    <ul class="cal-list rv">
-      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-dhol"/></svg></span><div class="cal-info"><b data-i18n="ev_haldi_t"></b><span data-i18n="cal_date_haldi"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_haldi_q"></p></div><div class="cal-btns"><button class="mini-btn" data-act="ics:haldi" data-i18n="add_ics"></button></div></li>
-      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-gate"/></svg></span><div class="cal-info"><b data-i18n="ev_wedding_t"></b><span data-i18n="cal_date_wedding"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_wedding_q"></p></div><div class="cal-btns"><button class="mini-btn" data-act="ics:wedding" data-i18n="add_ics"></button></div></li>
-      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-dhol"/></svg></span><div class="cal-info"><b data-i18n="baraat_title"></b><span data-i18n="cal_date_baraat"></span><p class="cal-q" data-i18n="baraat_caption"></p></div><div class="cal-btns"><button class="mini-btn" data-act="ics:baraat" data-i18n="add_ics"></button></div></li>
-      <li class="cal-row"><span class="cal-ic"><svg><use href="#i-home"/></svg></span><div class="cal-info"><b data-i18n="ev_bride_t"></b><span data-i18n="cal_date_bride"></span> · <em data-i18n="cal_allday"></em><p class="cal-q" data-i18n="ev_bride_q"></p></div><div class="cal-btns"><button class="mini-btn" data-act="ics:bride" data-i18n="add_ics"></button></div></li>
-    </ul>
-    <div class="cal-all-row rv">
-      <button class="btn btn-solid" data-act="ics:all" data-i18n="cal_all"></button>
+      <div class="venue-btns">
+        <a class="btn btn-solid" href="https://www.google.com/maps/search/?api=1&amp;query=Narayan%20Vatika%2C%20Mutthi%20Ganj%2C%20Prayagraj" target="_blank" rel="noopener" data-i18n="btn_directions"></a>
+        <button class="btn btn-line" data-act="copy-address" data-i18n="btn_copy_addr"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -908,11 +907,6 @@ input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
   <p class="mp-q" data-i18n="music_q"></p>
   <div class="mp-btns"><button class="btn btn-solid" id="mpYes" data-i18n="music_play"></button><button class="btn btn-line" id="mpNo" data-i18n="music_later"></button></div>
 </div>
-<nav class="quick-dock" id="quickDock" aria-label="Quick actions">
-  <a href="https://maps.app.goo.gl/ybS8xni4sQpXdQwY6" target="_blank" rel="noopener" data-i18n="dock_map"></a>
-  <button type="button" data-act="ics:all" data-i18n="dock_cal"></button>
-  <button type="button" data-act="share-open" data-i18n="dock_share"></button>
-</nav>
 
 <div id="backdrop" hidden></div>
 <section class="sheet" id="shareSheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden>
@@ -1216,7 +1210,7 @@ const W={
 };
 const T={
 en:{gate_title:'A special invitation awaits you…',gate_sub:'May we know who we\u2019re celebrating with?',gate_dear:'Dear',gate_name_ph:'Your Name',gate_fam:'I\u2019ll be coming with my family',gate_lang_q:'And in which language shall we write to you?',gate_en:'English',gate_hi:'\u0939\u093f\u0928\u094d\u0926\u0940',gate_both:'English + \u0939\u093f\u0928\u094d\u0926\u0940',gate_btn:'Reveal My Invitation \u2728',
-env_for:'A Special Invitation For',env_from:'With love, from {senderShort}',env_tap:'Tap the knot to untie the sacred thread',env_knot_wait:'The knot is opening…',env_tap_open:'Knot untied — tap the envelope again to open',skip:'Skip Intro',mini_inv:'With love and the blessings of our families',mini_date:'22 \u2014 25 NOVEMBER 2026 \u00b7 PRAYAGRAJ',
+env_for:'A Special Invitation For',env_from:'With love, from {senderShort}',env_tap:'Tap the knot to untie the sacred thread',env_knot_wait:'The knot is opening…',skip:'Skip Intro',mini_inv:'With love and the blessings of our families',mini_date:'22 \u2014 25 NOVEMBER 2026 \u00b7 PRAYAGRAJ',
 hero_eyebrow:'With love and the blessings of our families',hero_dates:'22 \u2014 25 NOVEMBER 2026',ch1_personal:'{first} Ji, our celebration would be incomplete without you.',
 letter_kicker:'A Letter To You',letter_salut:'Dear {addr},',
 hearts_kicker:'Two Hearts',journey_kicker:'The Celebration Journey',journey_title:'Our Days of Celebration',j_mon:'NOVEMBER',day_sun:'Sunday',day_tue:'Tuesday',day_wed:'Wednesday',
@@ -1226,7 +1220,7 @@ ev_bride_t:'Bride\u2019s Arrival',ev_bride_q:'\u201cA beautiful new beginning, w
 add_ics:'Add to Phone Calendar',
 baraat_kicker:'The Baraat Journey',baraat_title:'The Baraat',baraat_date:'24 November 2026',baraat_time:'7:00 PM',baraat_start:'Starting Point',baraat_gather:'Gathering Point',baraat_dest:'Destination',
 baraat_caption:'A joyful procession \u2014 gathering, music and celebration as we travel together.',
-venue_kicker:'The Venue',venue_title:'Where Forever Begins',venue_date:'Tuesday, 24 November 2026',
+venue_kicker:'The Venue',venue_title:'Where Forever Begins',venue_date:'Tuesday, 24 November 2026',btn_directions:'GET DIRECTIONS',btn_copy_addr:'COPY ADDRESS',
 cal_kicker:'Save The Date',cal_title:'Keep Our Celebration Close',cal_sub:'Carry our celebration with you \u2014 add the days to your phone calendar.',cal_allday:'All day',
 cal_date_haldi:'Sunday, 22 November 2026',cal_date_wedding:'Tuesday, 24 November 2026',cal_date_baraat:'Tuesday, 24 November 2026 \u00b7 7:00 PM',cal_date_bride:'Wednesday, 25 November 2026',
 cal_all:'Add All Events to Phone Calendar',cal_toast:'Saved to your phone calendar \u2764\ufe0f',
@@ -1236,7 +1230,6 @@ family_kicker:'With Warm Regards',family_reach:'You may reach us at',bless_btn:'
 final_see:'See you soon, {addr} \u2764\ufe0f',btn_save_cal:'Save to Phone Calendar',btn_share:'Share Invitation',fold_btn:'Fold Invitation',fold_message:'Until we celebrate together \u2014 with love, always.',fold_reopen:'Open Invitation Again',
 share_title:'Share This Invitation',f_guest:'Guest Name',f_sender:'Sender Name',f_shared_by:'Shared By',f_lang:'Language',f_both:'Both',sh_link:'Personalized link',act_copy_link:'Copy Invitation Link',act_wa:'WhatsApp',act_native:'Native Share',act_qr:'QR Code',
 music_q:'Would you like some music while you explore?',music_play:'Play Music',music_later:'Not Now',
-dock_map:'Map',dock_cal:'Phone Calendar',dock_share:'Share',
 gen_title:'Create & Send Invitations',gen_sub:'For the family \u2014 create a personal invitation link for each guest. No technical knowledge needed.',gen_btn:'Create Invitation',gen_link:'Personalized Link',gen_msg:'WhatsApp Message',gen_copy_link:'Copy Link',gen_copy_msg:'Copy Message',gen_preview:'Open Preview',gen_wa:'Share on WhatsApp',gen_close:'Back',
 toast_copied:'Copied \u2764\ufe0f',
 rsvp_kicker:'Aashirvad & Wishes',rsvp_title:'Send Your Blessings & Message',rsvp_sub:'Let the family know if you will join \u2014 and leave a blessing for Utkarsh & Simran.',
@@ -1246,7 +1239,7 @@ rsvp_send:'Send to the Family',rsvp_wa:'Send via WhatsApp',rsvp_done_t:'Received
 g_rel:'Relationship',g_rel_default:'\u2014 General guest \u2014',g_rel_friend:'Friend',g_rel_family:'Family',g_rel_relative:'Relative',g_rel_colleague:'Colleague',g_rel_elder:'Elder (blessings emphasized)',g_honor:'How to address them',g_fam:'Family mode',g_fam_l:'Address the whole family (\u2026& Family)',gen_preview_l:'Their personal line will read',
 footer_line:'Crafted with love, for family and friends.',footer_gen:'Family \u00b7 create personalized invitations',share_text:'You\u2019re invited \u2014 Utkarsh & Simran \u2764\ufe0f',copied_fallback:'Link copied \u2014 direct sharing isn\u2019t supported here \u2764\ufe0f',guest_default:'Guest'},
 hi:{gate_title:'\u090f\u0915 \u0935\u093f\u0936\u0947\u0937 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0906\u092a\u0915\u0940 \u092a\u094d\u0930\u0924\u0940\u0915\u094d\u0937\u093e \u092e\u0947\u0902 \u0939\u0948…',gate_sub:'\u0915\u094d\u092f\u093e \u0939\u092e \u091c\u093e\u0928 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0915\u093f \u0939\u092e \u0915\u093f\u0938\u0915\u0947 \u0938\u093e\u0925 \u0916\u0941\u0936\u093f\u092f\u093e\u0901 \u092e\u0928\u093e \u0930\u0939\u0947 \u0939\u0948\u0902?',gate_dear:'\u092a\u094d\u0930\u093f\u092f',gate_name_ph:'\u0906\u092a\u0915\u093e \u0928\u093e\u092e',gate_fam:'\u0939\u092e \u092a\u0930\u093f\u0935\u093e\u0930 \u0938\u0939\u093f\u0924 \u0906\u090f\u0901\u0917\u0947',gate_lang_q:'\u0914\u0930 \u0939\u092e \u0906\u092a\u0915\u094b \u0915\u093f\u0938 \u092d\u093e\u0937\u093e \u092e\u0947\u0902 \u0932\u093f\u0916\u0947\u0902?',gate_en:'English',gate_hi:'\u0939\u093f\u0928\u094d\u0926\u0940',gate_both:'English + \u0939\u093f\u0928\u094d\u0926\u0940',gate_btn:'\u092e\u0947\u0930\u093e \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0916\u094b\u0932\u0947\u0902 \u2728',
-env_for:'\u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u0935\u093f\u0936\u0947\u0937 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923',env_from:'\u0938\u092a\u094d\u0930\u0947\u092e \u2014 {senderShort}',env_tap:'पवित्र सूत्र की गाँठ खोलने के लिए छुएँ',env_knot_wait:'गाँठ खुल रही है…',env_tap_open:'गाँठ खुल गई — लिफ़ाफ़ा खोलने के लिए फिर छुएँ',skip:'\u091b\u094b\u0921\u093c\u0947\u0902',mini_inv:'\u092a\u094d\u0930\u0947\u092e \u090f\u0935\u0902 \u092a\u0930\u093f\u0935\u093e\u0930 \u0915\u0947 \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0915\u0947 \u0938\u093e\u0925',mini_date:'22 \u2014 25 \u0928\u0935\u092e\u094d\u092c\u0930 2026 \u00b7 \u092a\u094d\u0930\u092f\u093e\u0917\u0930\u093e\u091c',
+env_for:'\u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u0935\u093f\u0936\u0947\u0937 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923',env_from:'\u0938\u092a\u094d\u0930\u0947\u092e \u2014 {senderShort}',env_tap:'पवित्र सूत्र की गाँठ खोलने के लिए छुएँ',env_knot_wait:'गाँठ खुल रही है…',skip:'\u091b\u094b\u0921\u093c\u0947\u0902',mini_inv:'\u092a\u094d\u0930\u0947\u092e \u090f\u0935\u0902 \u092a\u0930\u093f\u0935\u093e\u0930 \u0915\u0947 \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0915\u0947 \u0938\u093e\u0925',mini_date:'22 \u2014 25 \u0928\u0935\u092e\u094d\u092c\u0930 2026 \u00b7 \u092a\u094d\u0930\u092f\u093e\u0917\u0930\u093e\u091c',
 hero_eyebrow:'\u0938\u092a\u094d\u0930\u0947\u092e \u090f\u0935\u0902 \u092a\u0930\u093f\u0935\u093e\u0930\u094b\u0902 \u0915\u0947 \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0915\u0947 \u0938\u093e\u0925',hero_dates:'22 \u2014 25 \u0928\u0935\u092e\u094d\u092c\u0930 2026',ch1_personal:'{first} \u091c\u0940, \u0906\u092a\u0915\u0940 \u0909\u092a\u0938\u094d\u0925\u093f\u0924\u093f \u0939\u092e\u093e\u0930\u0940 \u0916\u0941\u0936\u093f\u092f\u094b\u0902 \u0915\u094b \u0914\u0930 \u092d\u0940 \u0916\u093e\u0938 \u092c\u0928\u093e\u090f\u0917\u0940\u0964',
 letter_kicker:'\u0906\u092a\u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u092a\u0924\u094d\u0930',letter_salut:'\u092a\u094d\u0930\u093f\u092f {addrHi},',
 hearts_kicker:'\u0926\u094b \u0926\u093f\u0932',journey_kicker:'\u0909\u0924\u094d\u0938\u0935 \u0915\u0940 \u092f\u093e\u0924\u094d\u0930\u093e',journey_title:'\u0916\u0941\u0936\u093f\u092f\u094b\u0902 \u0915\u0947 \u0926\u093f\u0928',j_mon:'\u0928\u0935\u092e\u094d\u092c\u0930',day_sun:'\u0930\u0935\u093f\u0935\u093e\u0930',day_tue:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930',day_wed:'\u092c\u0941\u0927\u0935\u093e\u0930',
@@ -1256,7 +1249,7 @@ ev_bride_t:'\u0935\u0927\u0942 \u0917\u0943\u0939 \u0906\u0917\u092e\u0928',ev_b
 add_ics:'\u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0947\u0902',
 baraat_kicker:'\u092c\u093e\u0930\u093e\u0924 \u092f\u093e\u0924\u094d\u0930\u093e',baraat_title:'\u092c\u093e\u0930\u093e\u0924 \u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928',baraat_date:'24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',baraat_time:'\u0938\u093e\u092f\u0902 7:00 \u092c\u091c\u0947',baraat_start:'\u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928 \u0938\u094d\u0925\u0932',baraat_gather:'\u0938\u092e\u094d\u092e\u093f\u0932\u0928 \u0938\u094d\u0925\u0932',baraat_dest:'\u0917\u0902\u0924\u0935\u094d\u092f',
 baraat_caption:'\u090f\u0915 \u0909\u092e\u0902\u0917 \u092d\u0930\u0940 \u092c\u093e\u0930\u093e\u0924 \u2014 \u0938\u0902\u0917\u0940\u0924, \u0909\u0924\u094d\u0938\u093e\u0939 \u0904\u0930 \u0906\u092a\u0938\u0940 \u0938\u094d\u0928\u0947\u0939 \u0915\u0947 \u0938\u093e\u0925 \u0906\u0928\u0902\u0926\u092e\u092f \u092f\u093e\u0924\u094d\u0930\u093e\u0964',
-venue_kicker:'\u0938\u094d\u0925\u0932',venue_title:'\u091c\u0939\u093e\u0901 \u0939\u092e\u093e\u0930\u0947 \u0928\u090f \u0938\u092b\u093c\u0930 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u0939\u094b\u0917\u0940',venue_date:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',
+venue_kicker:'\u0938\u094d\u0925\u0932',venue_title:'\u091c\u0939\u093e\u0901 \u0939\u092e\u093e\u0930\u0947 \u0928\u090f \u0938\u092b\u093c\u0930 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u0939\u094b\u0917\u0940',venue_date:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',btn_directions:'\u0930\u093e\u0938\u094d\u0924\u093e \u0926\u0947\u0916\u0947\u0902',btn_copy_addr:'\u092a\u0924\u093e \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',
 cal_kicker:'\u0926\u093f\u0928 \u092f\u093e\u0926 \u0930\u0916\u0947\u0902',cal_title:'\u0939\u092e\u093e\u0930\u0940 \u0916\u0941\u0936\u093f\u092f\u094b\u0902 \u0915\u0940 \u0924\u093e\u0930\u0940\u0916\u093c \u0905\u092a\u0928\u0947 \u092a\u093e\u0938 \u0938\u0939\u0947\u091c\u0947\u0902',cal_sub:'\u0939\u092e\u093e\u0930\u0947 \u0936\u0941\u092d \u0905\u0935\u0938\u0930 \u0905\u092a\u0928\u0947 \u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0947\u0902 \u2014 \u0924\u093e\u0915\u093f \u0915\u094b\u0908 \u092a\u0932 \u091b\u0942\u091f\u0947 \u0928\u0939\u0940\u0902\u0964',cal_allday:'\u092a\u0942\u0930\u094d\u0923 \u0926\u093f\u0928',
 cal_date_haldi:'\u0930\u0935\u093f\u0935\u093e\u0930, 22 \u0928\u0935\u092e\u094d\u092c\u0930 2026',cal_date_wedding:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',cal_date_baraat:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026 \u00b7 \u0938\u093e\u092f\u0902 7:00 \u092c\u091c\u0947',cal_date_bride:'\u092c\u0941\u0927\u0935\u093e\u0930, 25 \u0928\u0935\u092e\u094d\u092c\u0930 2026',
 cal_all:'\u0938\u092d\u0940 \u0915\u093e\u0930\u094d\u092f\u0915\u094d\u0930\u092e \u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0947\u0902',cal_toast:'\u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u0938\u0939\u0947\u091c\u093e \u0917\u092f\u093e \u2764\ufe0f',
@@ -1266,7 +1259,6 @@ family_kicker:'\u0938\u093e\u0926\u0930',family_reach:'\u0938\u0902\u092a\u0930\
 final_see:'\u091c\u0932\u094d\u0926 \u092e\u093f\u0932\u0947\u0902\u0917\u0947, {addrHi} \u2764\ufe0f',btn_save_cal:'\u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u0938\u0939\u0947\u091c\u0947\u0902',btn_share:'\u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0938\u093e\u091d\u093e \u0915\u0930\u0947\u0902',fold_btn:'\u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0938\u092e\u0947\u091f\u0947\u0902',fold_message:'\u091c\u0932\u094d\u0926 \u092e\u093f\u0932\u0947\u0902\u0917\u0947 \u2014 \u0938\u0926\u093e \u0938\u092a\u094d\u0930\u0947\u092e\u0964',fold_reopen:'\u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u092b\u093f\u0930 \u0916\u094b\u0932\u0947\u0902',
 share_title:'\u092f\u0939 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0938\u093e\u091d\u093e \u0915\u0930\u0947\u0902',f_guest:'\u0905\u0924\u093f\u0925\u093f \u0915\u093e \u0928\u093e\u092e',f_sender:'\u092d\u0947\u091c\u0928\u0947 \u0935\u093e\u0932\u0947 \u0915\u093e \u0928\u093e\u092e',f_shared_by:'\u0938\u093e\u091d\u093e \u0915\u0930\u0928\u0947 \u0935\u093e\u0932\u0947 \u0915\u093e \u0928\u093e\u092e',f_lang:'\u092d\u093e\u0937\u093e',f_both:'\u0926\u094b\u0928\u094b\u0902',sh_link:'\u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0932\u093f\u0902\u0915',act_copy_link:'\u0932\u093f\u0902\u0915 \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',act_wa:'\u0935\u094d\u0939\u093e\u091f\u094d\u0938\u0910\u092a',act_native:'\u0936\u0947\u092f\u0930 \u0915\u0930\u0947\u0902',act_qr:'\u0915\u094d\u092f\u0942\u0906\u0930 \u0915\u094b\u0921',
 music_q:'\u0915\u094d\u092f\u093e \u0906\u092a \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0915\u0947 \u0938\u093e\u0925 \u0938\u0902\u0917\u0940\u0924 \u0938\u0941\u0928\u0928\u093e \u091a\u093e\u0939\u0947\u0902\u0917\u0947?',music_play:'\u0938\u0902\u0917\u0940\u0924 \u091a\u0932\u093e\u090f\u0901',music_later:'\u0905\u092d\u0940 \u0928\u0939\u0940\u0902',
-dock_map:'\u0928\u0915\u0936\u093e',dock_cal:'\u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930',dock_share:'\u0936\u0947\u092f\u0930',
 gen_title:'\u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u092c\u0928\u093e\u090f\u0901 \u0914\u0930 \u092d\u0947\u091c\u0947\u0902',gen_sub:'\u092a\u0930\u093f\u0935\u093e\u0930 \u0915\u0947 \u0932\u093f\u090f \u2014 \u0939\u0930 \u0905\u0924\u093f\u0925\u093f \u0915\u0947 \u0932\u093f\u090f \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u0932\u093f\u0902\u0915 \u092c\u0928\u093e\u090f\u0901\u0964 \u0915\u094b\u0908 \u0924\u0915\u0928\u0940\u0915\u0940 \u091c\u093e\u0928\u0915\u093e\u0930\u0940 \u091c\u093c\u0930\u0942\u0930\u0940 \u0928\u0939\u0940\u0902\u0964',gen_btn:'\u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923 \u092c\u0928\u093e\u090f\u0901',gen_link:'\u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0932\u093f\u0902\u0915',gen_msg:'\u0935\u094d\u0939\u093e\u091f\u094d\u0938\u0910\u092a \u0938\u0902\u0926\u0947\u0936',gen_copy_link:'\u0932\u093f\u0902\u0915 \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',gen_copy_msg:'\u0938\u0902\u0926\u0947\u0936 \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',gen_preview:'\u092a\u094d\u0930\u0940\u0935\u094d\u092f\u0942 \u0916\u094b\u0932\u0947\u0902',gen_wa:'\u0935\u094d\u0939\u093e\u091f\u094d\u0938\u0910\u092a \u092a\u0930 \u092d\u0947\u091c\u0947\u0902',gen_close:'\u0935\u093e\u092a\u0938',
 toast_copied:'\u0915\u0949\u092a\u0940 \u0939\u094b \u0917\u092f\u093e \u2764\ufe0f',
 rsvp_kicker:'\u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u090f\u0935\u0902 \u0936\u0941\u092d\u0915\u093e\u092e\u0928\u093e\u090f\u0901',rsvp_title:'\u0905\u092a\u0928\u093e \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u090f\u0935\u0902 \u0938\u0902\u0926\u0947\u0936 \u092d\u0947\u091c\u0947\u0902',rsvp_sub:'\u0915\u0943\u092a\u092f\u093e \u092a\u0930\u093f\u0935\u093e\u0930 \u0915\u094b \u092c\u0924\u093e\u090f\u0901 \u0915\u093f \u0906\u092a \u0938\u092e\u094d\u092e\u093f\u0932\u093f\u0924 \u0939\u094b\u0902\u0917\u0947 \u092f\u093e \u0928\u0939\u0940\u0902 \u2014 \u0914\u0930 \u0909\u0924\u094d\u0915\u0930\u094d\u0937 \u090f\u0935\u0902 \u0938\u093f\u092e\u0930\u0928 \u0915\u0947 \u0932\u093f\u090f \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0932\u093f\u0916\u0947\u0902\u0964',
@@ -1317,6 +1309,9 @@ function applyLang(lang,instant){
  document.title=state.lang==='hi'?'\u0909\u0924\u094d\u0915\u0930\u094d\u0937 \u090f\u0935\u0902 \u0938\u093f\u092e\u0930\u0928 | \u0935\u093f\u0935\u093e\u0939 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923':'Utkarsh & Simran | Wedding Invitation';
  $$('[data-i18n]').forEach(el=>{const v=T[L][el.dataset.i18n];if(v!=null)el.textContent=fill(v)});
  $$('[data-i18n-hi]').forEach(el=>{const v=T.hi[el.dataset.i18nHi];if(v!=null)el.textContent=fill(v)});
+ /* icon-only controls carry no text of their own, so the label lives on the
+    element as aria-label + title instead of in its content. */
+ $$('[data-i18n-aria]').forEach(el=>{const v=T[L][el.dataset.i18nAria];if(v!=null){const s=fill(v);el.setAttribute('aria-label',s);el.setAttribute('title',s)}});
  $$('[data-ph]').forEach(el=>el.placeholder=t(el.dataset.ph));
  renderSlots();updateEnvelopeText();renderGeoChip();renderSenderBlock();
  $$('#langPill button').forEach(b=>{const on=state.lang===b.dataset.langBtn||state.lang==='dual';b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on))});
@@ -1629,8 +1624,8 @@ function untieKnot(){
   if(state.opened)return;
   state.knotOpening=false;state.knotUntied=true;
   thread.classList.add('untied');stage.classList.remove('opening');stage.classList.add('knot-ready');
-  hint.dataset.i18n='env_tap_open';hint.textContent=t('env_tap_open');
-  $('#waxSeal').setAttribute('aria-label',t('env_tap_open'));
+  /* Single tap: once the knot settles, the envelope opens on its own. */
+  seqTimers.push(setTimeout(openSequence,450));
  };
  seqTimers.push(setTimeout(done,RM?160:1100));
 }
@@ -1746,9 +1741,6 @@ function onScrollTick(){
  ticking=true;
  requestAnimationFrame(()=>{
   updateJourney();updateBaraat();updateParallax();
-  const show=scrollY>innerHeight*.5&&$('#musicPrompt').hidden;
-  $('#quickDock').classList.toggle('show',show);
-  document.body.classList.toggle('dock',show);
   ticking=false});
 }
 const CD_T=Date.parse('2026-11-24T00:00:00+05:30');
