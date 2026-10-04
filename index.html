@@ -460,8 +460,9 @@ body[data-lang=hi] .cd-cell span{letter-spacing:.04em}
 .cd-done{text-align:center;font-family:var(--fh);font-style:italic;font-size:22px;color:#F3E3CB;margin:18px 0}
 .cd-baraat{text-align:center;font-family:var(--fh);font-size:15px;color:#D8A3A7;margin-top:14px}
 .cd-hash{text-align:center;font-family:var(--fh);font-size:13px;letter-spacing:.12em;color:#C79A50;margin-top:24px}
-.page-timer{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(12px + env(safe-area-inset-bottom));z-index:140;width:min(218px,calc(100vw - 24px));margin:0;padding:9px 10px 8px;border:1px solid rgba(220,180,111,.68);border-radius:13px;background:linear-gradient(145deg,rgba(115,30,48,.96),rgba(88,19,35,.96));box-shadow:0 12px 28px -12px rgba(72,20,29,.7),inset 0 0 0 1px rgba(255,249,239,.07);backdrop-filter:blur(8px);text-align:center;transition:bottom .35s,opacity .35s,transform .35s}
-.page-timer-label{display:block;margin-bottom:6px;font-family:var(--fh);font-weight:700;font-size:8px;line-height:1.2;letter-spacing:.12em;text-transform:uppercase;color:#EBCF9F;white-space:nowrap}
+/* Reserve the center music button and an 8px gap, even on narrow screens. */
+.page-timer{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(12px + env(safe-area-inset-bottom));z-index:140;width:min(218px,calc(50vw - 40px - env(safe-area-inset-left)));margin:0;padding:9px 10px 8px;border:1px solid rgba(220,180,111,.68);border-radius:13px;background:linear-gradient(145deg,rgba(115,30,48,.96),rgba(88,19,35,.96));box-shadow:0 12px 28px -12px rgba(72,20,29,.7),inset 0 0 0 1px rgba(255,249,239,.07);backdrop-filter:blur(8px);text-align:center;transition:bottom .35s,opacity .35s,transform .35s}
+.page-timer-label{display:block;margin-bottom:6px;font-family:var(--fh);font-weight:700;font-size:8px;line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:#EBCF9F;white-space:normal}
 body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb);font-size:8px;letter-spacing:0}
 .page-timer-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .page-timer-unit{position:relative;display:grid;gap:1px;place-items:center}
@@ -560,21 +561,19 @@ body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb
 .foot-script{font-family:'Noto Serif Devanagari',serif;font-size:22px;color:var(--burgundy);margin:8px 0 2px}
 .foot-line{font-size:12.5px;color:#8a6a58}
 .foot-gen{display:inline-block;margin-top:14px;font-family:var(--fh);font-size:13px;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
-.card-tools{position:fixed;right:calc(12px + env(safe-area-inset-right));bottom:calc(12px + env(safe-area-inset-bottom));z-index:145;display:grid;width:max-content;max-width:calc(50vw - 42px - env(safe-area-inset-right));border:1px solid rgba(182,138,66,.55);border-radius:16px;background:rgba(255,249,239,.96);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(57,28,36,.18);text-align:center}
-.card-tools a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:44px;padding:8px 10px;color:var(--burgundy);text-decoration:none;touch-action:manipulation;transition:background .2s}
-.card-tools a>span{min-width:0;overflow-wrap:anywhere}
-.card-download{border-radius:15px 15px 0 0;background:rgba(182,138,66,.12);font:700 11px/1.5 var(--fb)}
-body[data-lang=hi] .card-download{font-family:'Noto Sans Devanagari',var(--fb)}
-.powered-tag{border-top:1px solid rgba(182,138,66,.3);border-radius:0 0 15px 15px}
-.powered-tag small{font:600 9px/1.4 var(--fb);color:var(--gold-dark)}
-.powered-tag strong{font:700 10px/1.4 var(--fb)}
-.card-tools svg{width:14px;height:14px;flex:none}
-.card-tools a:hover{background:#F7EDDC}
+.card-tools{position:fixed;right:calc(12px + env(safe-area-inset-right));bottom:calc(12px + env(safe-area-inset-bottom));z-index:145;display:grid;width:max-content;max-width:calc(50vw - 42px - env(safe-area-inset-right));border:1px solid #D9B77E;border-radius:12px;background:linear-gradient(135deg,#842C40,#571525);box-shadow:0 5px 16px -5px rgba(73,23,34,.4),inset 0 0 0 2px rgba(255,233,189,.08);text-align:left}
+.card-tools a{display:flex;align-items:center;justify-content:center;gap:6px;min-width:44px;min-height:44px;padding:5px 8px;color:#FFF7E8;text-decoration:none;touch-action:manipulation;transition:background .2s,box-shadow .2s}
+.powered-tag{border-radius:11px}
+.powered-tag>span{display:grid;gap:1px}
+.powered-tag small{font:600 7px/1.4 var(--fb);letter-spacing:.04em;color:#EBCF9F;white-space:nowrap}
+.powered-tag strong{font:800 12px/1.3 var(--fb);letter-spacing:.06em;white-space:nowrap}
+.powered-tag strong i{font-style:normal;color:#EBCF9F}
+.powered-tag svg{width:12px;height:12px;flex:none;color:#EBCF9F}
+.card-tools a:hover{background:rgba(255,233,189,.1);box-shadow:inset 0 0 0 1px rgba(235,207,159,.3)}
 .card-tools a:focus-visible{outline:3px solid var(--burgundy);outline-offset:3px}
 @media(max-width:520px){
- .card-tools svg{display:none}
- .page-timer{bottom:calc(164px + env(safe-area-inset-bottom))}
- .foot{padding-bottom:calc(240px + env(safe-area-inset-bottom))}
+ .page-timer{padding:8px 5px 7px;border-radius:10px}
+ .page-timer-unit b{font-size:16px}
 }
 #langPill{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:150}
 #langPill #langToggle{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;width:62px;height:32px;padding:0 8px;border:1px solid rgba(182,138,66,.55);border-radius:999px;background:rgba(255,249,239,.94);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(73,23,34,.1);font:700 10px/1 'Manrope',sans-serif;color:var(--burgundy);transition:background .2s,border-color .2s;touch-action:manipulation}
@@ -1014,12 +1013,8 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
   <p class="foot-line" data-i18n="footer_line"></p>
 </footer>
 <div class="card-tools">
-  <a class="card-download" href="assets/Ornate%20Prayagraj%20Wedding%20Invitation.png" download="Utkarsh-Weds-Simran-Wedding-Card.png">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>
-    <span data-i18n="download_card">Download Card</span>
-  </a>
-  <a class="powered-tag" href="https://dakshsoft.in" lang="en" aria-label="Powered by DS&amp;S (Daksh Solution and Services) — visit dakshsoft.in">
-    <span><small>Powered by</small> <strong>DS&amp;S</strong></span>
+  <a class="powered-tag" href="https://dakshsoft.in" target="_blank" rel="noopener noreferrer" lang="en" aria-label="Powered by DS&amp;S (Daksh Solution and Services) — opens dakshsoft.in in a new tab">
+    <span><small>Powered by</small><strong>DS<i>&amp;</i>S</strong></span>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
   </a>
 </div>
@@ -1062,9 +1057,13 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
   <div class="f-row"><label for="shLang" data-i18n="f_lang"></label><select id="shLang"><option value="en">English</option><option value="hi">हिन्दी</option><option value="dual" data-i18n="f_both"></option></select></div>
   <div class="f-row"><label data-i18n="sh_link"></label><p class="f-url" id="shUrl"></p></div>
   <p class="geo-note" id="shLinkWarning" role="status" data-i18n="share_local_help" hidden></p>
+  <p class="geo-note" data-i18n="card_share_help"></p>
+  <p class="geo-note card-share-status" role="status" hidden></p>
   <div class="sheet-actions">
-    <button class="btn btn-solid" data-act="sh-copy" data-i18n="act_copy_link"></button>
-    <button class="btn btn-line" data-act="sh-wa" data-i18n="act_wa"></button>
+    <button class="btn btn-solid" data-act="sh-card" data-i18n="card_share"></button>
+    <button class="btn btn-line" data-act="sh-copy-msg" data-i18n="gen_copy_msg"></button>
+    <button class="btn btn-line" data-act="sh-wa" data-i18n="card_link_share"></button>
+    <button class="btn btn-line" data-act="sh-copy" data-i18n="act_copy_link"></button>
     <button class="btn btn-line" data-act="sh-native" data-i18n="act_native"></button>
     <button class="btn btn-line" data-act="sh-qr" data-i18n="act_qr"></button>
   </div>
@@ -1105,10 +1104,13 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
       <div class="f-row"><label data-i18n="gen_preview_l"></label><p class="f-url" id="genPreview" style="font-style:italic"></p></div>
       <div class="f-row"><label data-i18n="gen_msg"></label><p class="gen-msg" id="genMsg"></p></div>
       <div class="qr-box" id="genQrBox"><div class="qr-code" id="genQr" role="img" aria-label="Invitation QR code"></div></div>
+      <p class="geo-note" data-i18n="card_share_help"></p>
+      <p class="geo-note card-share-status" role="status" hidden></p>
       <div class="sheet-actions">
-        <button class="btn btn-line" data-act="gen-copy" data-i18n="gen_copy_link"></button>
+        <button class="btn btn-solid" data-act="gen-card" data-i18n="card_share"></button>
         <button class="btn btn-line" data-act="gen-copy-msg" data-i18n="gen_copy_msg"></button>
-        <button class="btn btn-solid" data-act="gen-wa" data-i18n="gen_wa"></button>
+        <button class="btn btn-line" data-act="gen-wa" data-i18n="card_link_share"></button>
+        <button class="btn btn-line" data-act="gen-copy" data-i18n="gen_copy_link"></button>
         <button class="btn btn-line" data-act="gen-preview" data-i18n="gen_preview"></button>
       </div>
     </div>
@@ -1395,11 +1397,18 @@ hearts_kicker:'Two Hearts',journey_kicker:'The Celebration Journey',journey_titl
 ev_haldi_t:'Haldi & Mehndi',ev_haldi_q:'\u201cA celebration painted in shades of haldi, mehndi, laughter and love.\u201d',
 ev_wedding_t:'Wedding & Reception',ev_wedding_q:'\u201cThe day two hearts, two families and countless beautiful memories become one.\u201d',
 ev_bride_t:'Bride\u2019s Arrival',ev_bride_q:'\u201cA beautiful new beginning, welcomed with love and blessings.\u201d',
-add_ics:'Add to Phone Calendar',download_card:'Download Card',
+add_ics:'Add to Phone Calendar',
 guest_welcome_label:'With love, especially for',guest_welcome_sign:'With love, Utkarsh & Simran',guest_welcome_default:'Our dear guest',guest_welcome_family:'You & your family',note_recipient:'For {guestName}, with love',
 baraat_kicker:'The Baraat Journey',baraat_title:'The Baraat',baraat_date:'24 November 2026',baraat_time:'7:00 PM',baraat_start:'Starting Point',baraat_gather:'Gathering Point',baraat_dest:'Destination',
 f_wishes_to:'WhatsApp number for wishes',wishes_help:'Choose where guests send their wishes. This number is saved in the invitation link.',wishes_destination:'Send wishes to:',
 share_local_help:'This is a local preview link, not a public invitation. Open the published HTTPS website and create the link there before sharing on WhatsApp.',
+card_share:'Share Card + Invite',card_link_share:'WhatsApp — Invite + Card Link',
+card_share_help:'The invitation message includes the Google Drive card link and your personalized invitation link. Share Card + Invite can also attach the existing card image on supported phones; choose WhatsApp and check the caption before sending. If the caption is missing or shortened, use Copy Message and paste it separately. The card artwork itself is not personalized.',
+card_share_loading:'Preparing the card image…',card_share_ready:'Card ready — tap Share Card + Invite and choose WhatsApp.',
+card_share_unavailable:'This browser cannot share image files. Use WhatsApp — Invite + Card Link to send the invitation with the Google Drive card link instead.',
+card_share_load_failed:'The card image could not be loaded. Tap Share Card + Invite to retry, or use WhatsApp — Invite + Card Link to send the links instead.',
+card_share_failed:'Image sharing did not complete. Try again, or use WhatsApp — Invite + Card Link to send the links instead.',
+card_share_copy_failed:'Copy failed. Use WhatsApp — Invite + Card Link to open the complete invitation message.',
 wishes_from:'Wishes from:',
 baraat_live:'Follow the royal procession',baraat_map:'Open Arrival Map',
 baraat_caption:'A joyful procession \u2014 gathering, music and celebration as we travel together.',
@@ -1434,8 +1443,14 @@ guest_welcome_label:'सप्रेम, खास आपके लिए',guest
 baraat_kicker:'\u092c\u093e\u0930\u093e\u0924 \u092f\u093e\u0924\u094d\u0930\u093e',baraat_title:'\u092c\u093e\u0930\u093e\u0924 \u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928',baraat_date:'24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',baraat_time:'\u0938\u093e\u092f\u0902 7:00 \u092c\u091c\u0947',baraat_start:'\u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928 \u0938\u094d\u0925\u0932',baraat_gather:'\u0938\u092e\u094d\u092e\u093f\u0932\u0928 \u0938\u094d\u0925\u0932',baraat_dest:'\u0917\u0902\u0924\u0935\u094d\u092f',
 f_wishes_to:'शुभकामनाओं के लिए व्हाट्सऐप नंबर',wishes_help:'चुनें कि अतिथि किस नंबर पर शुभकामनाएँ भेजें। यह नंबर निमंत्रण लिंक में सहेजा जाएगा।',wishes_destination:'शुभकामनाएँ भेजें:',
 baraat_live:'शाही बारात के संग चलें',baraat_map:'आगमन का नक्शा खोलें',
-download_card:'कार्ड डाउनलोड करें',
 share_local_help:'यह लोकल प्रीव्यू लिंक है, सार्वजनिक निमंत्रण नहीं। व्हाट्सऐप पर साझा करने से पहले प्रकाशित HTTPS वेबसाइट खोलकर वहाँ से लिंक बनाएँ।',
+card_share:'कार्ड + निमंत्रण साझा करें',card_link_share:'व्हाट्सऐप — निमंत्रण + कार्ड लिंक',
+card_share_help:'निमंत्रण संदेश में Google Drive कार्ड लिंक और आपका व्यक्तिगत निमंत्रण लिंक शामिल हैं। समर्थित फ़ोन पर कार्ड + निमंत्रण साझा करें से मौजूदा कार्ड की तस्वीर भी जोड़ सकते हैं; WhatsApp चुनकर भेजने से पहले कैप्शन जाँचें। कैप्शन गायब या छोटा हो तो संदेश कॉपी करके अलग से पेस्ट करें। कार्ड की तस्वीर में अतिथि का नाम नहीं जोड़ा जाता है।',
+card_share_loading:'कार्ड की तस्वीर तैयार हो रही है…',card_share_ready:'कार्ड तैयार है — कार्ड + निमंत्रण साझा करें दबाएँ और WhatsApp चुनें।',
+card_share_unavailable:'यह ब्राउज़र तस्वीर साझा नहीं कर सकता। Google Drive कार्ड लिंक सहित निमंत्रण भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
+card_share_load_failed:'कार्ड की तस्वीर लोड नहीं हुई। फिर कोशिश करने के लिए कार्ड + निमंत्रण साझा करें दबाएँ, या लिंक भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
+card_share_failed:'तस्वीर साझा नहीं हो सकी। फिर कोशिश करें, या लिंक भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
+card_share_copy_failed:'संदेश कॉपी नहीं हुआ। पूरा निमंत्रण संदेश खोलने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
 wishes_from:'शुभकामनाएँ भेजने वाले:',
 baraat_caption:'\u090f\u0915 \u0909\u092e\u0902\u0917 \u092d\u0930\u0940 \u092c\u093e\u0930\u093e\u0924 \u2014 \u0938\u0902\u0917\u0940\u0924, \u0909\u0924\u094d\u0938\u093e\u0939 \u0914\u0930 \u0906\u092a\u0938\u0940 \u0938\u094d\u0928\u0947\u0939 \u0915\u0947 \u0938\u093e\u0925 \u0906\u0928\u0902\u0926\u092e\u092f \u092f\u093e\u0924\u094d\u0930\u093e\u0964',
 venue_kicker:'\u0938\u094d\u0925\u0932',venue_title:'\u091c\u0939\u093e\u0901 \u0939\u092e\u093e\u0930\u0947 \u0928\u090f \u0938\u092b\u093c\u0930 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u0939\u094b\u0917\u0940',venue_date:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',btn_directions:'\u0930\u093e\u0938\u094d\u0924\u093e \u0926\u0947\u0916\u0947\u0902',btn_copy_addr:'\u092a\u0924\u093e \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',
@@ -1613,6 +1628,7 @@ function toast(msg){$('#toastMsg').textContent=msg;const el=$('#toast');el.class
 async function copyText(s){try{await navigator.clipboard.writeText(s);return true}catch(e){
  const ta=document.createElement('textarea');ta.value=s;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();
  let ok=false;try{ok=document.execCommand('copy')}catch(_){}ta.remove();return ok}}
+const INVITATION_CARD_URL='https://drive.google.com/file/d/1a_vOgA7RBYvbNekj9JuMFk20BqD1mySB/view?usp=sharing';
 function waOpen(num,text){window.open('https://wa.me/'+(num||'')+'?text='+encodeURIComponent(text),'_blank')}
 function waMessage(lang,to,from,url){
  const name=sanitizeText(from,80);
@@ -1665,8 +1681,9 @@ With warm regards,
 ${sender}`;
  });
  const label=lang==='hi'?'आपका व्यक्तिगत निमंत्रण:':lang==='dual'?'Open your personal invitation / आपका व्यक्तिगत निमंत्रण:':'Open your personal invitation:';
- // One plain, full URL on its own line; WhatsApp controls link detection.
- return parts.join('\n\n———\n\n')+'\n\n#UtkarshWedsSimran'+(url?'\n\n'+label+'\n\n'+String(url).trim():'');
+ const cardLabel=lang==='hi'?'विवाह का कार्ड देखें:':lang==='dual'?'View wedding card / विवाह का कार्ड देखें:':'View wedding card:';
+ // Each full URL appears once, on its own line; WhatsApp controls link detection and previews.
+ return parts.join('\n\n———\n\n')+'\n\n#UtkarshWedsSimran'+'\n\n'+cardLabel+'\n\n'+INVITATION_CARD_URL+(url?'\n\n'+label+'\n\n'+String(url).trim():'');
 }
 function isLocalInvitationURL(value){
  try{
@@ -1679,6 +1696,62 @@ function isLocalInvitationURL(value){
 async function nativeShare(url,message=t('share_text')){
  if(navigator.share){try{await navigator.share({title:document.title,text:message,url})}catch(e){}}
  else{await copyText(message+'\n\n'+url);toast(t('copied_fallback'))}
+}
+// wa.me shares the invitation and Drive link as text; optional Web Share also attaches the local PNG.
+// The Drive viewing page is a link in the message, not the image attachment.
+const INVITATION_CARD_SRC='assets/Ornate%20Prayagraj%20Wedding%20Invitation.png';
+let invitationCardFile=null,invitationCardPending=null,invitationCardSharing=false;
+function cardShareStatus(key){
+ $$('.card-share-status').forEach(el=>{
+  el.dataset.i18n=key;el.textContent=t(key);el.hidden=false;
+ });
+}
+function supportsCardShare(){return window.isSecureContext&&typeof navigator.share==='function'&&typeof navigator.canShare==='function'}
+function prepareInvitationCard(){
+ if(!supportsCardShare()){cardShareStatus('card_share_unavailable');return Promise.resolve(null)}
+ if(invitationCardFile){cardShareStatus('card_share_ready');return Promise.resolve(invitationCardFile)}
+ if(invitationCardPending)return invitationCardPending;
+ cardShareStatus('card_share_loading');
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
+ invitationCardPending=(async()=>{
+  try{
+   const response=await fetch(INVITATION_CARD_SRC,{signal:controller.signal});
+   if(!response.ok)throw new Error('Card request failed');
+   const blob=await response.blob();
+   if(blob.type!=='image/png'||!blob.size)throw new Error('Invalid card image');
+   invitationCardFile=new File([blob],'Utkarsh-Weds-Simran-Wedding-Card.png',{type:'image/png'});
+   cardShareStatus('card_share_ready');
+   return invitationCardFile;
+  }catch(e){cardShareStatus('card_share_load_failed');return null}
+  finally{clearTimeout(timer);invitationCardPending=null}
+ })();
+ return invitationCardPending;
+}
+async function shareInvitationCard(message){
+ if(invitationCardSharing||!message.trim())return;
+ if(!supportsCardShare()){cardShareStatus('card_share_unavailable');return}
+ // Preload when opening either sharing screen. Never await a fetch before navigator.share:
+ // Safari requires the share call to remain inside the user's original tap activation.
+ if(!invitationCardFile){prepareInvitationCard();return}
+ const payload={files:[invitationCardFile],title:document.title,text:message};
+ try{if(!navigator.canShare(payload)){cardShareStatus('card_share_unavailable');return}}
+ catch(e){cardShareStatus('card_share_unavailable');return}
+ invitationCardSharing=true;
+ const buttons=$$('[data-act="sh-card"],[data-act="gen-card"]');
+ buttons.forEach(button=>{button.disabled=true;button.setAttribute('aria-busy','true')});
+ try{
+  await navigator.share(payload);
+  // Resolving the share sheet does not confirm delivery to WhatsApp or any recipient.
+  cardShareStatus('card_share_ready');
+ }catch(e){cardShareStatus(e.name==='AbortError'?'card_share_ready':'card_share_failed')}
+ finally{
+  invitationCardSharing=false;
+  buttons.forEach(button=>{button.disabled=false;button.removeAttribute('aria-busy')});
+ }
+}
+async function copyInvitationMessage(message){
+ if(await copyText(message))toast(t('toast_copied'));
+ else cardShareStatus('card_share_copy_failed');
 }
 let qrP=null;
 function ensureQR(cb){
@@ -2100,6 +2173,7 @@ function openShareSheet(){
  $('#shTo').value=state.guest||'';$('#shFrom').value=state.guest||state.sharedBy||state.sender||'';
  $('#shLang').value=state.lang==='dual'?'dual':state.lang;
  updateSharePreview();openSheet($('#shareSheet'));
+ prepareInvitationCard();
 }
 function updateSharePreview(){
  const to=sanitizeText($('#shTo').value,60)||'Guest';
@@ -2129,6 +2203,7 @@ function genCreate(){
  const rw=relWordsFor(rel,lang==='hi'?'hi':'en');
  $('#genPreview').textContent=lang==='hi'?rw.p.replace(/\{addrHi\}/g,addrForHi(to,honor)):rw.p.replace(/\{addr\}/g,addrFor(to,honor));
  $('#genResult').hidden=false;
+ prepareInvitationCard();
  renderQR($('#genQr'),url);
  $('#genResult').scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'});
 }
@@ -2158,12 +2233,15 @@ document.addEventListener('click',e=>{
  else if(act==='note-toggle'){const n=$('#note');const open=n.classList.toggle('open');$('#noteBtn').setAttribute('aria-expanded',open)}
  else if(act==='sheet-close')closeSheets();
  else if(act==='sh-copy')copyText($('#shUrl').textContent).then(ok=>ok&&toast(t('toast_copied')));
+ else if(act==='sh-copy-msg')copyInvitationMessage(shareSheetMessage());
+ else if(act==='sh-card')shareInvitationCard(shareSheetMessage());
  else if(act==='sh-wa')waOpen('',shareSheetMessage());
  else if(act==='sh-native')nativeShare($('#shUrl').textContent,shareSheetMessage(false));
  else if(act==='sh-qr'){const box=$('#shQrBox');box.hidden=!box.hidden;if(!box.hidden)renderQR($('#shQr'),$('#shUrl').textContent)}
  else if(act==='gen-create')genCreate();
+ else if(act==='gen-card')shareInvitationCard($('#genMsg').textContent);
  else if(act==='gen-copy')copyText($('#genUrl').textContent).then(ok=>ok&&toast(t('toast_copied')));
- else if(act==='gen-copy-msg')copyText($('#genMsg').textContent).then(ok=>ok&&toast(t('toast_copied')));
+ else if(act==='gen-copy-msg')copyInvitationMessage($('#genMsg').textContent);
  else if(act==='gen-preview')window.open($('#genUrl').textContent,'_blank');
  else if(act==='gen-wa')waOpen('',$('#genMsg').textContent);
  else if(act==='gen-close'){history.replaceState(null,'',location.pathname+location.search);route()}
