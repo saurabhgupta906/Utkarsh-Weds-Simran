@@ -560,20 +560,29 @@ body[data-lang=hi] .page-timer-label{font-family:'Noto Sans Devanagari',var(--fb
 .foot-script{font-family:'Noto Serif Devanagari',serif;font-size:22px;color:var(--burgundy);margin:8px 0 2px}
 .foot-line{font-size:12.5px;color:#8a6a58}
 .foot-gen{display:inline-block;margin-top:14px;font-family:var(--fh);font-size:13px;color:var(--gold);text-decoration:underline;text-underline-offset:3px}
-.powered-tag{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));z-index:145;transform:translateX(-50%);display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100vw - 32px);min-height:44px;padding:8px 16px;border:1px solid rgba(182,138,66,.55);border-radius:999px;background:rgba(255,249,239,.96);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(57,28,36,.18);color:var(--burgundy);text-decoration:none;text-align:center;transition:background .2s,box-shadow .2s;touch-action:manipulation}
-.powered-tag small{display:block;font:600 8px/1.4 var(--fb);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-dark)}
-.powered-tag strong{display:block;font:700 11px/1.5 var(--fb);overflow-wrap:anywhere}
-.powered-tag svg{width:14px;height:14px;flex:none}
-.powered-tag:hover{background:#FFFDF6;box-shadow:0 10px 28px rgba(57,28,36,.28)}
-.powered-tag:focus-visible{outline:3px solid var(--burgundy);outline-offset:4px}
-@media(max-width:800px){.powered-tag{bottom:calc(86px + env(safe-area-inset-bottom))}}
+.card-tools{position:fixed;right:calc(12px + env(safe-area-inset-right));bottom:calc(12px + env(safe-area-inset-bottom));z-index:145;display:grid;width:max-content;max-width:calc(50vw - 42px - env(safe-area-inset-right));border:1px solid rgba(182,138,66,.55);border-radius:16px;background:rgba(255,249,239,.96);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(57,28,36,.18);text-align:center}
+.card-tools a{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:44px;padding:8px 10px;color:var(--burgundy);text-decoration:none;touch-action:manipulation;transition:background .2s}
+.card-tools a>span{min-width:0;overflow-wrap:anywhere}
+.card-download{border-radius:15px 15px 0 0;background:rgba(182,138,66,.12);font:700 11px/1.5 var(--fb)}
+body[data-lang=hi] .card-download{font-family:'Noto Sans Devanagari',var(--fb)}
+.powered-tag{border-top:1px solid rgba(182,138,66,.3);border-radius:0 0 15px 15px}
+.powered-tag small{font:600 9px/1.4 var(--fb);color:var(--gold-dark)}
+.powered-tag strong{font:700 10px/1.4 var(--fb)}
+.card-tools svg{width:14px;height:14px;flex:none}
+.card-tools a:hover{background:#F7EDDC}
+.card-tools a:focus-visible{outline:3px solid var(--burgundy);outline-offset:3px}
+@media(max-width:520px){
+ .card-tools svg{display:none}
+ .page-timer{bottom:calc(164px + env(safe-area-inset-bottom))}
+ .foot{padding-bottom:calc(240px + env(safe-area-inset-bottom))}
+}
 #langPill{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:150}
 #langPill #langToggle{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;width:62px;height:32px;padding:0 8px;border:1px solid rgba(182,138,66,.55);border-radius:999px;background:rgba(255,249,239,.94);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(73,23,34,.1);font:700 10px/1 'Manrope',sans-serif;color:var(--burgundy);transition:background .2s,border-color .2s;touch-action:manipulation}
 #langToggle::before{content:'';position:absolute;inset:-6px 0;border-radius:inherit}
 #langToggle svg{width:12px;height:12px;flex:none}
 #langToggle [lang=hi]{font-family:'Noto Sans Devanagari',sans-serif;font-size:11px}
 #langPill #langToggle:hover{background:#F7EDDC;border-color:var(--gold)}
-#musicBtn{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:150;width:40px;height:40px;border-radius:50%;display:none;place-items:center;background:rgba(255,249,239,.92);border:1px solid rgba(182,138,66,.5);box-shadow:0 7px 18px -6px rgba(88,54,44,.35);color:var(--burgundy);transition:.3s}
+#musicBtn{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:150;width:40px;height:40px;border-radius:50%;display:none;place-items:center;background:rgba(255,249,239,.92);border:1px solid rgba(182,138,66,.5);box-shadow:0 7px 18px -6px rgba(88,54,44,.35);color:var(--burgundy);transition:.3s}
 #musicBtn.vis{display:grid}
 #musicBtn.on{background:var(--burgundy);color:var(--ivory)}
 #musicBtn svg{width:16px;height:16px}
@@ -1004,10 +1013,16 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
   <p class="foot-script">प्रेम पत्र</p>
   <p class="foot-line" data-i18n="footer_line"></p>
 </footer>
-<a class="powered-tag" href="https://dakshsoft.in" lang="en" aria-label="Powered by Daksh Solution and Services — visit dakshsoft.in">
-  <span><small>Powered by</small><strong>Daksh Solution and Services</strong></span>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
-</a>
+<div class="card-tools">
+  <a class="card-download" href="assets/Ornate%20Prayagraj%20Wedding%20Invitation.png" download="Utkarsh-Weds-Simran-Wedding-Card.png">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg>
+    <span data-i18n="download_card">Download Card</span>
+  </a>
+  <a class="powered-tag" href="https://dakshsoft.in" lang="en" aria-label="Powered by DS&amp;S (Daksh Solution and Services) — visit dakshsoft.in">
+    <span><small>Powered by</small> <strong>DS&amp;S</strong></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+  </a>
+</div>
 </main>
 
 <section id="closingScene" hidden role="dialog" aria-modal="true" aria-label="Closing envelope" tabindex="-1">
@@ -1046,6 +1061,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
   <div class="f-row"><label for="shFrom" data-i18n="f_shared_by"></label><input id="shFrom" type="text" maxlength="60"></div>
   <div class="f-row"><label for="shLang" data-i18n="f_lang"></label><select id="shLang"><option value="en">English</option><option value="hi">हिन्दी</option><option value="dual" data-i18n="f_both"></option></select></div>
   <div class="f-row"><label data-i18n="sh_link"></label><p class="f-url" id="shUrl"></p></div>
+  <p class="geo-note" id="shLinkWarning" role="status" data-i18n="share_local_help" hidden></p>
   <div class="sheet-actions">
     <button class="btn btn-solid" data-act="sh-copy" data-i18n="act_copy_link"></button>
     <button class="btn btn-line" data-act="sh-wa" data-i18n="act_wa"></button>
@@ -1085,6 +1101,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
     <button class="btn btn-solid" data-act="gen-create" data-i18n="gen_btn"></button>
     <div id="genResult" hidden>
       <div class="f-row"><label data-i18n="gen_link"></label><p class="f-url" id="genUrl"></p></div>
+      <p class="geo-note" id="genLinkWarning" role="status" data-i18n="share_local_help" hidden></p>
       <div class="f-row"><label data-i18n="gen_preview_l"></label><p class="f-url" id="genPreview" style="font-style:italic"></p></div>
       <div class="f-row"><label data-i18n="gen_msg"></label><p class="gen-msg" id="genMsg"></p></div>
       <div class="qr-box" id="genQrBox"><div class="qr-code" id="genQr" role="img" aria-label="Invitation QR code"></div></div>
@@ -1349,18 +1366,24 @@ const W={
   baraat:{title:'The Baraat',titleHi:'बारात प्रस्थान',start:'20261124T190000',end:'20261124T220000',allDay:false,tz:'Asia/Kolkata',location:'61/1/M, Pushpanjali Nagar (Near Water Tank) Bhawapur, Prayagraj',details:'Starting Point:\n61/1/M, Pushpanjali Nagar (Near Water Tank) Bhawapur, Prayagraj\n\nGathering Point:\nBholegiri Mandir, Mutthi Ganj\n\nDestination:\nNarayan Vatika, Mutthi Ganj, Prayagraj'},
   bride:{title:"Bride's Arrival",titleHi:'वधू गृह आगमन',start:'20261125',end:'20261126',allDay:true,qKey:'ev_bride_q'}
  },
- blessings:{whatsapp:'919198606160',recipients:['919198606160','917376625876','919335150123']}
+ // Keep these contact IDs stable: shared invitation links use them instead of phone numbers.
+ blessings:{whatsapp:'919198606160',recipients:{'contact-1':'919198606160','contact-2':'917376625876','contact-3':'919335150123'}}
 };
 function resolveWishesRecipient(value){
  const raw=String(value||'').trim();
  const number=/^\d{10}$/.test(raw)?'91'+raw:raw.replace(/^\+/, '');
- return W.blessings.recipients.includes(number)?number:W.blessings.whatsapp;
+ const recipient=Object.entries(W.blessings.recipients).find(([id,phone])=>id===raw||phone===number);
+ return recipient?recipient[1]:W.blessings.whatsapp;
+}
+function wishesRecipientKey(value){
+ const number=resolveWishesRecipient(value);
+ return Object.keys(W.blessings.recipients).find(id=>W.blessings.recipients[id]===number)||'contact-1';
 }
 function wishesRecipient(){return resolveWishesRecipient(state.wishesTo)}
 function formatWishesNumber(value){return '+91 '+resolveWishesRecipient(value).slice(2)}
 function mountWishesOptions(){
  const select=$('#genWishesTo');
- select.replaceChildren(...W.blessings.recipients.map(number=>new Option(formatWishesNumber(number),number)));
+ select.replaceChildren(...Object.values(W.blessings.recipients).map(number=>new Option(formatWishesNumber(number),number)));
  select.value=wishesRecipient();
 }
 const T={
@@ -1372,10 +1395,12 @@ hearts_kicker:'Two Hearts',journey_kicker:'The Celebration Journey',journey_titl
 ev_haldi_t:'Haldi & Mehndi',ev_haldi_q:'\u201cA celebration painted in shades of haldi, mehndi, laughter and love.\u201d',
 ev_wedding_t:'Wedding & Reception',ev_wedding_q:'\u201cThe day two hearts, two families and countless beautiful memories become one.\u201d',
 ev_bride_t:'Bride\u2019s Arrival',ev_bride_q:'\u201cA beautiful new beginning, welcomed with love and blessings.\u201d',
-add_ics:'Add to Phone Calendar',
+add_ics:'Add to Phone Calendar',download_card:'Download Card',
 guest_welcome_label:'With love, especially for',guest_welcome_sign:'With love, Utkarsh & Simran',guest_welcome_default:'Our dear guest',guest_welcome_family:'You & your family',note_recipient:'For {guestName}, with love',
 baraat_kicker:'The Baraat Journey',baraat_title:'The Baraat',baraat_date:'24 November 2026',baraat_time:'7:00 PM',baraat_start:'Starting Point',baraat_gather:'Gathering Point',baraat_dest:'Destination',
 f_wishes_to:'WhatsApp number for wishes',wishes_help:'Choose where guests send their wishes. This number is saved in the invitation link.',wishes_destination:'Send wishes to:',
+share_local_help:'This is a local preview link, not a public invitation. Open the published HTTPS website and create the link there before sharing on WhatsApp.',
+wishes_from:'Wishes from:',
 baraat_live:'Follow the royal procession',baraat_map:'Open Arrival Map',
 baraat_caption:'A joyful procession \u2014 gathering, music and celebration as we travel together.',
 venue_kicker:'The Venue',venue_title:'Where Forever Begins',venue_date:'Tuesday, 24 November 2026',btn_directions:'GET DIRECTIONS',btn_copy_addr:'COPY ADDRESS',
@@ -1409,6 +1434,9 @@ guest_welcome_label:'सप्रेम, खास आपके लिए',guest
 baraat_kicker:'\u092c\u093e\u0930\u093e\u0924 \u092f\u093e\u0924\u094d\u0930\u093e',baraat_title:'\u092c\u093e\u0930\u093e\u0924 \u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928',baraat_date:'24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',baraat_time:'\u0938\u093e\u092f\u0902 7:00 \u092c\u091c\u0947',baraat_start:'\u092a\u094d\u0930\u0938\u094d\u0925\u093e\u0928 \u0938\u094d\u0925\u0932',baraat_gather:'\u0938\u092e\u094d\u092e\u093f\u0932\u0928 \u0938\u094d\u0925\u0932',baraat_dest:'\u0917\u0902\u0924\u0935\u094d\u092f',
 f_wishes_to:'शुभकामनाओं के लिए व्हाट्सऐप नंबर',wishes_help:'चुनें कि अतिथि किस नंबर पर शुभकामनाएँ भेजें। यह नंबर निमंत्रण लिंक में सहेजा जाएगा।',wishes_destination:'शुभकामनाएँ भेजें:',
 baraat_live:'शाही बारात के संग चलें',baraat_map:'आगमन का नक्शा खोलें',
+download_card:'कार्ड डाउनलोड करें',
+share_local_help:'यह लोकल प्रीव्यू लिंक है, सार्वजनिक निमंत्रण नहीं। व्हाट्सऐप पर साझा करने से पहले प्रकाशित HTTPS वेबसाइट खोलकर वहाँ से लिंक बनाएँ।',
+wishes_from:'शुभकामनाएँ भेजने वाले:',
 baraat_caption:'\u090f\u0915 \u0909\u092e\u0902\u0917 \u092d\u0930\u0940 \u092c\u093e\u0930\u093e\u0924 \u2014 \u0938\u0902\u0917\u0940\u0924, \u0909\u0924\u094d\u0938\u093e\u0939 \u0914\u0930 \u0906\u092a\u0938\u0940 \u0938\u094d\u0928\u0947\u0939 \u0915\u0947 \u0938\u093e\u0925 \u0906\u0928\u0902\u0926\u092e\u092f \u092f\u093e\u0924\u094d\u0930\u093e\u0964',
 venue_kicker:'\u0938\u094d\u0925\u0932',venue_title:'\u091c\u0939\u093e\u0901 \u0939\u092e\u093e\u0930\u0947 \u0928\u090f \u0938\u092b\u093c\u0930 \u0915\u0940 \u0936\u0941\u0930\u0941\u0906\u0924 \u0939\u094b\u0917\u0940',venue_date:'\u092e\u0902\u0917\u0932\u0935\u093e\u0930, 24 \u0928\u0935\u092e\u094d\u092c\u0930 2026',btn_directions:'\u0930\u093e\u0938\u094d\u0924\u093e \u0926\u0947\u0916\u0947\u0902',btn_copy_addr:'\u092a\u0924\u093e \u0915\u0949\u092a\u0940 \u0915\u0930\u0947\u0902',
 cal_kicker:'\u0926\u093f\u0928 \u092f\u093e\u0926 \u0930\u0916\u0947\u0902',cal_title:'\u0939\u092e\u093e\u0930\u0940 \u0916\u0941\u0936\u093f\u092f\u094b\u0902 \u0915\u0940 \u0924\u093e\u0930\u0940\u0916\u093c \u0905\u092a\u0928\u0947 \u092a\u093e\u0938 \u0938\u0939\u0947\u091c\u0947\u0902',cal_sub:'\u0939\u092e\u093e\u0930\u0947 \u0936\u0941\u092d \u0905\u0935\u0938\u0930 \u0905\u092a\u0928\u0947 \u092b\u093c\u094b\u0928 \u0915\u0948\u0932\u0947\u0902\u0921\u0930 \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0947\u0902 \u2014 \u0924\u093e\u0915\u093f \u0915\u094b\u0908 \u092a\u0932 \u091b\u0942\u091f\u0947 \u0928\u0939\u0940\u0902\u0964',cal_allday:'\u092a\u0942\u0930\u094d\u0923 \u0926\u093f\u0928',
@@ -1497,7 +1525,7 @@ function parseParams(){
  state.guest=sanitizeText(p.get('to'),80);
  state.sender=sanitizeText(p.get('from'),80)||null;
  state.sharedBy=sanitizeText(p.get('sharedBy'),80)||state.sender;
- state.wishesTo=resolveWishesRecipient(p.get('wishesTo'));
+ state.wishesTo=resolveWishesRecipient(p.get('wishes')||p.get('wishesTo'));
  let lang=(p.get('lang')||'').toLowerCase();if(lang==='both')lang='dual';
  state.lang=VALID.includes(lang)?lang:null;
  try{
@@ -1518,9 +1546,9 @@ function parseParams(){
 function buildURL(to,from,lang,extra){
  const base=location.origin==='null'?location.href.split(/[?#]/)[0]:location.origin+location.pathname;
  const q=new URLSearchParams();if(to)q.set('to',to);if(from)q.set('from',from);if(lang)q.set('lang',lang);
- if(extra)for(const k in extra)if(extra[k])q.set(k,extra[k]);
- // Re-shares retain this invitation's recipient; the creator can explicitly choose another.
- q.set('wishesTo',resolveWishesRecipient(extra?.wishesTo??state.wishesTo));
+ if(extra)for(const k of Object.keys(extra))if(extra[k]&&k!=='wishesTo'&&k!=='wishes')q.set(k,extra[k]);
+ // Keep the chosen destination when re-sharing, without putting its phone number in the URL.
+ q.set('wishes',wishesRecipientKey(extra?.wishes??extra?.wishesTo??state.wishesTo));
  return base+'?'+q.toString();
 }
 function evTitle(ev){return curL()==='hi'?ev.titleHi:ev.title}
@@ -1587,13 +1615,70 @@ async function copyText(s){try{await navigator.clipboard.writeText(s);return tru
  let ok=false;try{ok=document.execCommand('copy')}catch(_){}ta.remove();return ok}}
 function waOpen(num,text){window.open('https://wa.me/'+(num||'')+'?text='+encodeURIComponent(text),'_blank')}
 function waMessage(lang,to,from,url){
- const sender=from||(lang==='hi'?W.host.familyHi:W.host.family);
- if(lang==='hi')return '\u0938\u092a\u094d\u0930\u0947\u092e \u090f\u0935\u0902 \u092a\u0930\u093f\u0935\u093e\u0930 \u0915\u0947 \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0915\u0947 \u0938\u093e\u0925,\n\n'+guestTitledHi(to)+',\n\n\u0906\u092a\u0915\u094b उत्कर्ष संग सिमरन \u0915\u0947 \u0936\u0941\u092d \u0935\u093f\u0935\u093e\u0939 \u0938\u092e\u093e\u0930\u094b\u0939 \u092e\u0947\u0902\n\u0938\u093e\u0926\u0930 \u0906\u092e\u0902\u0924\u094d\u0930\u093f\u0924 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u2764\ufe0f\n\n22\u201325 \u0928\u0935\u092e\u094d\u092c\u0930 2026\n\u092a\u094d\u0930\u092f\u093e\u0917\u0930\u093e\u091c\n\n22 \u0928\u0935\u092e\u094d\u092c\u0930 \u2014 \u0939\u0932\u0926\u0940 \u090f\u0935\u0902 \u092e\u0947\u0902\u0926\u0940\n\n24 \u0928\u0935\u092e\u094d\u092c\u0930 \u2014 \u0936\u0941\u092d \u0935\u093f\u0935\u093e\u0939 \u090f\u0935\u0902 \u0938\u094d\u0935\u093e\u0917\u0924 \u0938\u092e\u093e\u0930\u094b\u0939\n\u0928\u093e\u0930\u093e\u092f\u0923 \u0935\u093e\u091f\u093f\u0915\u093e, \u092e\u0941\u091f\u094d\u0920\u0940 \u0917\u0902\u091c, \u092a\u094d\u0930\u092f\u093e\u0917\u0930\u093e\u091c\n\n25 \u0928\u0935\u092e\u094d\u092c\u0930 \u2014 \u0935\u0927\u0942 \u0917\u0943\u0939 \u0906\u0917\u092e\u0928\n\n\u0906\u092a\u0915\u0940 \u0909\u092a\u0938\u094d\u0925\u093f\u0924\u093f \u090f\u0935\u0902 \u0906\u0936\u0940\u0930\u094d\u0935\u093e\u0926 \u0939\u092e\u093e\u0930\u0947 \u0932\u093f\u090f \u0905\u0928\u092e\u094b\u0932 \u0939\u094b\u0902\u0917\u0947\u0964\n\n\u0906\u092a\u0915\u093e \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0917\u0924 \u0928\u093f\u092e\u0902\u0924\u094d\u0930\u0923:\n'+url+'\n\n\u0938\u093e\u0926\u0930,\n'+sender+'\n\n#UtkarshWedsSimran';
- return 'With love and the blessings of our families, we warmly invite you,\n'+guestTitled(to)+', to celebrate the wedding of \ud83d\udc8d\u2728\n\nUtkarsh Weds Simran\n\n22\u201325 November 2026\nPrayagraj\n\n22 Nov \u2014 Haldi & Mehndi\n\n24 Nov \u2014 Wedding & Reception\nNarayan Vatika, Mutthi Ganj, Prayagraj\n\n25 Nov \u2014 Bride\'s Arrival\n\nYour presence and blessings would mean the world to us. \u2764\ufe0f\n\nOpen your personal invitation:\n'+url+'\n\nWith warm regards,\n'+sender+'\n\n#UtkarshWedsSimran';
+ const name=sanitizeText(from,80);
+ const languages=lang==='dual'?['en','hi']:[lang==='hi'?'hi':'en'];
+ const parts=languages.map(language=>{
+  const sender=name||(language==='hi'?W.host.familyHi:W.host.family);
+  if(language==='hi')return `निमंत्रण भेजने वाले: ${sender}
+
+सप्रेम एवं परिवार के आशीर्वाद के साथ,
+
+${guestTitledHi(to)},
+
+आपको उत्कर्ष संग सिमरन के शुभ विवाह समारोह में
+सादर आमंत्रित करते हैं। ❤️
+
+22–25 नवम्बर 2026
+प्रयागराज
+
+22 नवम्बर — हलदी एवं मेंदी
+
+24 नवम्बर — शुभ विवाह एवं स्वागत समारोह
+नारायण वाटिका, मुट्ठी गंज, प्रयागराज
+
+25 नवम्बर — वधू गृह आगमन
+
+आपकी उपस्थिति एवं आशीर्वाद हमारे लिए अनमोल होंगे।
+
+सादर,
+${sender}`;
+  return `Invitation from: ${sender}
+
+With love and the blessings of our families, we warmly invite you,
+${guestTitled(to)}, to celebrate the wedding of 💍✨
+
+Utkarsh Weds Simran
+
+22–25 November 2026
+Prayagraj
+
+22 Nov — Haldi & Mehndi
+
+24 Nov — Wedding & Reception
+Narayan Vatika, Mutthi Ganj, Prayagraj
+
+25 Nov — Bride's Arrival
+
+Your presence and blessings would mean the world to us. ❤️
+
+With warm regards,
+${sender}`;
+ });
+ const label=lang==='hi'?'आपका व्यक्तिगत निमंत्रण:':lang==='dual'?'Open your personal invitation / आपका व्यक्तिगत निमंत्रण:':'Open your personal invitation:';
+ // One plain, full URL on its own line; WhatsApp controls link detection.
+ return parts.join('\n\n———\n\n')+'\n\n#UtkarshWedsSimran'+(url?'\n\n'+label+'\n\n'+String(url).trim():'');
 }
-async function nativeShare(url){
- if(navigator.share){try{await navigator.share({title:document.title,text:t('share_text'),url})}catch(e){}}
- else{await copyText(url);toast(t('copied_fallback'))}
+function isLocalInvitationURL(value){
+ try{
+  const url=new URL(value),host=url.hostname.toLowerCase();
+  return !['http:','https:'].includes(url.protocol)||!host.includes('.')||
+   /^(localhost|127\.|0\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[)/.test(host)||
+   /\.(localhost|local|test|invalid)$/.test(host)||host==='your-domain.com';
+ }catch(e){return true}
+}
+async function nativeShare(url,message=t('share_text')){
+ if(navigator.share){try{await navigator.share({title:document.title,text:message,url})}catch(e){}}
+ else{await copyText(message+'\n\n'+url);toast(t('copied_fallback'))}
 }
 let qrP=null;
 function ensureQR(cb){
@@ -2021,6 +2106,10 @@ function updateSharePreview(){
  const sharedBy=sanitizeText($('#shFrom').value,60);
  const url=buildURL(to,state.sender||sharedBy,$('#shLang').value,{sharedBy:sharedBy});
  $('#shUrl').textContent=url;$('#shQrBox').hidden=true;
+ $('#shLinkWarning').hidden=!isLocalInvitationURL(url);
+}
+function shareSheetMessage(includeLink=true){
+ return waMessage($('#shLang').value,sanitizeText($('#shTo').value,60)||'Guest',sanitizeText($('#shFrom').value,60),includeLink?$('#shUrl').textContent:'');
 }
 function genCreate(){
  const to=sanitizeText($('#genTo').value,60)||'Guest';
@@ -2035,9 +2124,8 @@ function genCreate(){
  if(fam)extra.family=fam;
  const url=buildURL(to,from,lang,extra);
  $('#genUrl').textContent=url;
- let msg=waMessage(lang==='hi'?'hi':'en',to,from,url);
- if(lang==='dual')msg+='\n\n\u2014\u2014\u2014\n\n'+waMessage('hi',to,from,url);
- $('#genMsg').textContent=msg;
+ $('#genLinkWarning').hidden=!isLocalInvitationURL(url);
+ $('#genMsg').textContent=waMessage(lang,to,from,url);
  const rw=relWordsFor(rel,lang==='hi'?'hi':'en');
  $('#genPreview').textContent=lang==='hi'?rw.p.replace(/\{addrHi\}/g,addrForHi(to,honor)):rw.p.replace(/\{addr\}/g,addrFor(to,honor));
  $('#genResult').hidden=false;
@@ -2045,7 +2133,8 @@ function genCreate(){
  $('#genResult').scrollIntoView({behavior:RM?'auto':'smooth',block:'nearest'});
 }
 function bless(){
- const msg=t('bless_msg')+'\n\n*'+senderFull()+'*';
+ const sender=sanitizeText(state.guest,80)||t('guest_default');
+ const msg=t('bless_msg')+'\n\n'+t('wishes_from')+' '+sender;
  pingVisit('blessing',{action:'blessing',detail:msg});   // the blessing text lands in the sheet
  waOpen(wishesRecipient(),msg);
 }
@@ -2069,8 +2158,8 @@ document.addEventListener('click',e=>{
  else if(act==='note-toggle'){const n=$('#note');const open=n.classList.toggle('open');$('#noteBtn').setAttribute('aria-expanded',open)}
  else if(act==='sheet-close')closeSheets();
  else if(act==='sh-copy')copyText($('#shUrl').textContent).then(ok=>ok&&toast(t('toast_copied')));
- else if(act==='sh-wa')waOpen('',waMessage($('#shLang').value==='hi'?'hi':'en',sanitizeText($('#shTo').value,60)||'Guest',sanitizeText($('#shFrom').value,60),$('#shUrl').textContent));
- else if(act==='sh-native')nativeShare($('#shUrl').textContent);
+ else if(act==='sh-wa')waOpen('',shareSheetMessage());
+ else if(act==='sh-native')nativeShare($('#shUrl').textContent,shareSheetMessage(false));
  else if(act==='sh-qr'){const box=$('#shQrBox');box.hidden=!box.hidden;if(!box.hidden)renderQR($('#shQr'),$('#shUrl').textContent)}
  else if(act==='gen-create')genCreate();
  else if(act==='gen-copy')copyText($('#genUrl').textContent).then(ok=>ok&&toast(t('toast_copied')));
