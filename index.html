@@ -270,11 +270,9 @@ body[data-lang=hi] .env-for{letter-spacing:.05em}
 .hero-content{margin:-110px auto 0;position:relative;z-index:3;padding:0 26px 70px;color:var(--brown);text-align:center;max-width:640px}
 .hero-eyebrow{font-family:var(--fh);font-style:italic;font-size:clamp(16px,4.4vw,20px);font-weight:700;color:#79594B}
 .hero-eyebrow.hi-alt{font-size:15px;margin-top:4px}
-.hero-names{margin:8px 0 0;line-height:.84}
+.hero-names{margin:8px 0 0;line-height:1.15}
 .hero-names .only-en{display:block;font-family:'Great Vibes',cursive;font-size:clamp(54px,14vw,88px);color:var(--burgundy)}
-.hero-name-part{display:block}
-.hero-weds{display:block;margin:.26em 0 .18em;font-family:var(--fh);font-size:.22em;font-weight:700;line-height:1;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dark);transform:translateX(.15em)}
-.hero-names .only-hi{display:block;font-family:'Noto Serif Devanagari',serif;font-weight:500;font-size:clamp(28px,8.2vw,48px);line-height:1.28;color:var(--burgundy)}
+.hero-names .only-hi{display:block;font-family:'Noto Serif Devanagari',serif;font-weight:500;font-size:clamp(28px,8.2vw,48px);line-height:1.45;color:var(--burgundy)}
 .hero-names i{font-style:italic;font-size:.62em}
 .hero-parentage{max-width:520px;margin:18px auto 0;font-family:var(--fh);font-size:clamp(15px,4vw,18px);font-weight:600;line-height:1.45;color:#79594B}
 .hero-parentage.only-hi{font-family:'Noto Serif Devanagari',serif;font-weight:500}
@@ -616,8 +614,43 @@ body[data-lang=hi] .f-row label{letter-spacing:.03em}
 .pill span,.mini-inv,.hero-eyebrow,.hero-personal,.l-sign span,.ms-day,.ms-q,.stop-label span,.caption,.venue-addr,.cal-info span,.note-hint,.note-inner .n-sign span,.rsvp-sub,.geo-note,.rsvp-done .rd-m,.fam-addr,.foot-line,#langPill button,.sheet-close,.f-url,.gen-msg{color:var(--gold-muted)}
 #ch-baraat .stop-label b{color:#5C1727}#ch-baraat .stop-label span{color:#775A4B}#ch-baraat .caption{color:#E4C99A}
 input::placeholder,textarea::placeholder{color:#A1885B;opacity:1}
+/* Shared three-line, stepped couple title; keep each name intact at every size. */
+.couple-title{display:block;width:4.8em;max-width:100%;margin-inline:auto;line-height:1.2;text-transform:none;letter-spacing:normal}
+.couple-title[lang=hi]{font-family:'Noto Serif Devanagari',serif;line-height:1.45}
+.couple-title>span{display:block;font:inherit;color:inherit;letter-spacing:normal;white-space:nowrap}
+.couple-title>span:first-child{text-align:left}
+.couple-title>span:nth-child(2){font-family:var(--fh);font-size:.38em;font-weight:700;line-height:1.8;letter-spacing:.12em;text-align:center}
+.couple-title>span:last-child{text-align:right}
+.couple-title+.couple-title{margin-top:.5em}
+.couple-copy>.couple-copy-inner{display:block;min-width:0;max-width:100%}
+.couple-copy .couple-title{margin-block:.4em;font-size:22px;font-style:normal}
+.couple-copy .couple-title>span:nth-child(2){font-size:11px}
+/* Compact paper surfaces show dual titles side by side, never on a single line. */
+.mini{padding:5% 8% 0}
+.mini-inv{margin-top:2%;font-size:12px;line-height:1.4}
+.mini-names{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-width:0}
+.mini-names .couple-title{font-size:clamp(24px,6.5vw,30px);min-width:0}
+.mini-names .couple-title[lang=hi]{font-size:clamp(19px,5vw,23px)}
+.mini-names .couple-title+.couple-title{margin-top:0}
+.mini-line{flex-shrink:0;margin:5px 0}
+.mini-date{line-height:1.4}
+.env-band{justify-content:space-between;padding-inline:4%}
+.env-band>.couple-title{width:27%;max-width:27%;margin:0;font:600 clamp(11px,3vw,14px)/1.2 var(--fh);letter-spacing:normal;overflow:visible;text-transform:none}
+.env-band>.couple-title[lang=hi]{font-family:'Noto Serif Devanagari',serif;line-height:1.4}
+.env-band>.couple-title>span{max-width:none;overflow:visible;font:inherit;color:inherit;letter-spacing:normal;text-transform:none}
+.env-band>.couple-title>span:nth-child(2){font-size:.7em;line-height:1.3;text-align:center}
+.note-inner .n-sign>span{display:block;font-family:var(--fh);font-style:italic;font-size:14px;color:var(--gold-muted)}
+.note-inner .n-sign .couple-title>span{font:inherit;color:inherit}
+.note-inner .n-sign .couple-title>span:nth-child(2){font-family:var(--fh);font-size:.38em;font-weight:700;line-height:1.8}
+.closing-paper{padding:12px;grid-template-columns:minmax(0,1fr)}
+.closing-paper>span{grid-column:1/-1}
+.closing-paper .couple-title>span{font:inherit;color:inherit;letter-spacing:normal}
+.closing-paper .couple-title>span:nth-child(2){font-family:var(--fh);font-size:.38em;font-weight:700;line-height:1.8}
+body[data-lang=dual] .closing-paper{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-lang=dual] .closing-paper .couple-title{margin-top:0;font-size:clamp(22px,6vw,32px)}
+body[data-lang=dual] .closing-paper .couple-title[lang=hi]{font-size:clamp(19px,5vw,26px)}
 /* Language visibility must outrank component-level display declarations. */
-body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!important}
+body[data-lang=en] .only-hi,body[data-lang=hi] .only-en,body:not([data-lang=dual]) .hi-alt{display:none!important}
 @media(min-width:800px){
  .hero-photo{height:92svh;min-height:0;isolation:isolate;background:#3c2828}
  .hero-photo::before{content:'';position:absolute;z-index:0;inset:-28px;background:url('assets/couple-full.jpg') 55% 32%/cover no-repeat;filter:blur(20px);opacity:.48;transform:scale(1.06)}
@@ -737,7 +770,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
           <div class="mini">
             <div class="mini-mono rvx">U <i>&#9829;</i> S</div>
             <div class="mini-inv rvx" data-i18n="mini_inv"></div>
-            <div class="mini-names rvx rvx2"><span class="only-en script">Utkarsh Weds Simran</span><span class="only-hi">उत्कर्ष संग सिमरन</span></div>
+            <div class="mini-names rvx rvx2"><span class="couple-title only-en script" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></span><span class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></span></div>
             <div class="mini-line"></div>
             <div class="mini-date rvx rvx3" data-i18n="mini_date"></div>
           </div>
@@ -754,7 +787,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
           <div class="face face-front"><span class="flap-crest"><b>U &amp; S</b><small>Prem Patra</small></span></div>
           <div class="face face-back"></div>
         </div>
-        <div class="env-band" id="envBand"><span>Utkarsh Weds Simran</span></div>
+        <div class="env-band" id="envBand"><span class="couple-title only-en" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></span><span class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></span></div>
         <div class="env-thread" id="envThread" aria-hidden="true">
           <span class="thread-cord cord-left"></span><span class="thread-cord cord-right"></span>
           <span class="thread-cord cord-top"></span><span class="thread-cord cord-bottom"></span>
@@ -780,7 +813,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
     <div class="rv">
       <p class="hero-eyebrow" data-i18n="hero_eyebrow"></p>
       <p class="hero-eyebrow hi-alt" data-i18n-hi="hero_eyebrow"></p>
-      <h1 class="hero-names"><span class="only-en script"><span class="hero-name-part">Utkarsh</span><span class="hero-weds">Weds</span><span class="hero-name-part">Simran</span></span><span class="only-hi">उत्कर्ष संग सिमरन</span></h1>
+      <h1 class="hero-names"><span class="couple-title only-en script" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></span><span class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></span></h1>
       <p class="hero-parentage only-en">Utkarsh, son of Dharmendra Kumar Gupta &amp; Shashi Bala Gupta</p>
       <p class="hero-parentage only-hi">उत्कर्ष — धर्मेन्द्र कुमार गुप्ता एवं शशि बाला गुप्ता के सुपुत्र</p>
       <div class="sangam"></div>
@@ -816,7 +849,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
         <p>With immense joy and the blessings of our families,</p>
         <p class="l-sender" data-slot="sender_en"></p>
         <p data-slot="invite_line"></p>
-        <div class="l-names"><span class="only-en script">Utkarsh Weds Simran</span><span class="only-hi">उत्कर्ष संग सिमरन</span></div>
+        <div class="l-names"><span class="couple-title only-en script" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></span></div>
         <p>Your presence, love and blessings would make this beautiful occasion even more meaningful to us.</p>
         <div class="l-sign"><span>With warm regards,</span><b data-slot="sender_en"></b></div>
       </div>
@@ -826,7 +859,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
         <p>हमें अत्यंत हर्ष है कि परिवार के आशीर्वाद के साथ</p>
         <p class="l-sender" data-slot-hi="sender_hi"></p>
         <p data-slot-hi="invite_line"></p>
-        <div class="l-names"><span class="only-en script">Utkarsh Weds Simran</span><span class="only-hi">उत्कर्ष संग सिमरन</span></div>
+        <div class="l-names"><span class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></span></div>
         <p>के शुभ विवाह समारोह में।</p>
         <p>आपकी उपस्थिति, स्नेह एवं आशीर्वाद हमारे इस शुभ अवसर को और भी विशेष बनाएंगे।</p>
         <div class="l-sign"><span>सादर,</span><b data-slot-hi="sender_hi"></b></div>
@@ -960,13 +993,13 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
           <p class="n-salut" data-slot="letter_salut"></p>
           <p data-slot="note_b1"></p>
           <p data-slot="note_b2"></p>
-          <div class="n-sign"><span>With love,</span><b>Utkarsh Weds Simran</b></div>
+          <div class="n-sign"><span>With love,</span><b class="couple-title" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></b></div>
         </div>
         <div class="only-hi">
           <p class="n-salut" data-slot-hi="letter_salut"></p>
           <p data-slot-hi="note_b1"></p>
           <p data-slot-hi="note_b2"></p>
-          <div class="n-sign"><span>सप्रेम,</span><b>उत्कर्ष संग सिमरन</b></div>
+          <div class="n-sign"><span>सप्रेम,</span><b class="couple-title" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></b></div>
         </div>
       </div></div></div>
     </div>
@@ -996,7 +1029,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
     <div class="fin-content">
       <p class="fin-thanks only-en">From our hearts to yours,<br>thank you for being a part of our story.</p>
       <p class="fin-thanks only-hi">हमारी खुशियों का हिस्सा बनने के लिए दिल से धन्यवाद।</p>
-      <div class="fin-names"><span class="only-en script">Utkarsh Weds Simran</span><span class="only-hi">उत्कर्ष संग सिमरन</span></div>
+      <div class="fin-names"><span class="couple-title only-en script" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></span><span class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></span></div>
       <p class="fin-see" data-slot="final_see"></p>
       <p class="fin-see hi-alt" data-slot-hi="final_see"></p>
       <p class="fin-hash">#UtkarshWedsSimran</p>
@@ -1027,7 +1060,7 @@ body[data-lang=en] .only-hi,body:not([data-lang=dual]) .hi-alt{display:none!impo
       <div class="closing-envelope">
         <div class="closing-back"></div>
         <div class="closing-paper">
-          <b class="only-en">Utkarsh Weds Simran</b><b class="only-hi">उत्कर्ष संग सिमरन</b>
+          <b class="couple-title only-en" lang="en"><span>Utkarsh</span> <span>Weds</span> <span>Simran</span></b><b class="couple-title only-hi" lang="hi"><span>उत्कर्ष</span> <span>संग</span> <span>सिमरन</span></b>
           <span>#UtkarshWedsSimran</span>
         </div>
         <div class="closing-front"></div>
@@ -1508,14 +1541,31 @@ function renderSlots(){
  $$('[data-slot]').forEach(el=>{const lang=el.closest('.only-en')?'en':curL();const v=slotVal(el.dataset.slot,lang);el.lang=lang;el.hidden=(v==='');el.textContent=v});
  $$('[data-slot-hi]').forEach(el=>{const v=slotVal(el.dataset.slotHi,'hi');el.lang='hi';el.hidden=(v==='');el.textContent=v});
 }
+// Only trusted couple-title copy gets structured markup; personalized values stay text.
+function renderTranslation(el,value,lang,key){
+ const text=fill(value);
+ if(!['guest_welcome_sign','note_kicker'].includes(key)){el.textContent=text;return}
+ const name=lang==='hi'?W.couple.nameHi:W.couple.nameEn;
+ const copy=text.replace('Utkarsh & Simran',W.couple.nameEn).replace('उत्कर्ष और सिमरन',W.couple.nameHi);
+ const index=copy.indexOf(name);
+ if(index<0){el.textContent=text;return}
+ const wrapper=document.createElement('span'),title=document.createElement('span');
+ wrapper.className='couple-copy-inner';title.className='couple-title';title.lang=lang;
+ name.split(' ').forEach((word,i)=>{
+  if(i)title.append(document.createTextNode(' '));
+  const line=document.createElement('span');line.textContent=word;title.append(line);
+ });
+ wrapper.append(document.createTextNode(copy.slice(0,index)),title,document.createTextNode(copy.slice(index+name.length)));
+ el.classList.add('couple-copy');el.replaceChildren(wrapper);
+}
 function applyLang(lang,instant){
  state.lang=VALID.includes(lang)?lang:'en';
  const L=curL();
  document.body.dataset.lang=state.lang;
  document.documentElement.lang=state.lang==='hi'?'hi':'en';
  document.title=state.lang==='hi'?'उत्कर्ष संग सिमरन | विवाह निमंत्रण':'Utkarsh Weds Simran | Wedding Invitation';
- $$('[data-i18n]').forEach(el=>{const v=T[L][el.dataset.i18n];if(v!=null)el.textContent=fill(v)});
- $$('[data-i18n-hi]').forEach(el=>{const v=T.hi[el.dataset.i18nHi];if(v!=null)el.textContent=fill(v)});
+ $$('[data-i18n]').forEach(el=>{const k=el.dataset.i18n,v=T[L][k];if(v!=null)renderTranslation(el,v,L,k)});
+ $$('[data-i18n-hi]').forEach(el=>{const k=el.dataset.i18nHi,v=T.hi[k];if(v!=null)renderTranslation(el,v,'hi',k)});
  /* icon-only controls carry no text of their own, so the label lives on the
     element as aria-label + title instead of in its content. */
  $$('[data-i18n-aria]').forEach(el=>{const v=T[L][el.dataset.i18nAria];if(v!=null){const s=fill(v);el.setAttribute('aria-label',s);el.setAttribute('title',s)}});
@@ -1629,6 +1679,7 @@ async function copyText(s){try{await navigator.clipboard.writeText(s);return tru
  const ta=document.createElement('textarea');ta.value=s;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();
  let ok=false;try{ok=document.execCommand('copy')}catch(_){}ta.remove();return ok}}
 const INVITATION_CARD_URL='https://drive.google.com/file/d/1a_vOgA7RBYvbNekj9JuMFk20BqD1mySB/view?usp=sharing';
+function coupleTitleText(lang){return (lang==='hi'?W.couple.nameHi:W.couple.nameEn).split(' ').map((word,i)=>'   '.repeat(i)+word).join('\n')}
 function waOpen(num,text){window.open('https://wa.me/'+(num||'')+'?text='+encodeURIComponent(text),'_blank')}
 function waMessage(lang,to,from,url){
  const name=sanitizeText(from,80);
@@ -1641,8 +1692,11 @@ function waMessage(lang,to,from,url){
 
 ${guestTitledHi(to)},
 
-आपको उत्कर्ष संग सिमरन के शुभ विवाह समारोह में
-सादर आमंत्रित करते हैं। ❤️
+आपको
+
+${coupleTitleText('hi')}
+
+के शुभ विवाह समारोह में सादर आमंत्रित करते हैं। ❤️
 
 22–25 नवम्बर 2026
 प्रयागराज
@@ -1663,7 +1717,7 @@ ${sender}`;
 With love and the blessings of our families, we warmly invite you,
 ${guestTitled(to)}, to celebrate the wedding of 💍✨
 
-Utkarsh Weds Simran
+${coupleTitleText('en')}
 
 22–25 November 2026
 Prayagraj
