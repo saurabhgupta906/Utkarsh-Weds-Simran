@@ -1462,9 +1462,9 @@ card_share:'Share Card + Invite',card_link_share:'WhatsApp — Invite + Card Lin
 card_kicker:'A Keepsake',card_title:'Our Wedding Card',card_view:'View Full Size',card_download:'Download Card',
 scroll_hint:'Scroll',scroll_down:'Scroll down to continue reading the invitation',
 wa_message_help:'Text between asterisks (*) appears bold in WhatsApp. Choose WhatsApp — Invite + Card Link, select the recipient, review the message, then tap Send. Nothing is sent automatically.',wa_format_guide:'WhatsApp formatting guide',
-card_share_help:'The message includes your personalized invitation link and a link to the floral card on this website. Share Card + Invite can also attach the same card image on supported phones; choose WhatsApp and check the caption before sending. If the caption is missing or shortened, use Copy Message and paste it separately. The card artwork itself is not personalized.',
+card_share_help:'The message includes your personalized invitation link and the Google Drive card link. Share Card + Invite can also attach the floral card image from this website on supported phones; choose WhatsApp and check the caption before sending. If the caption is missing or shortened, use Copy Message and paste it separately. The card artwork itself is not personalized.',
 card_share_loading:'Preparing the card image…',card_share_ready:'Card ready — tap Share Card + Invite and choose WhatsApp.',
-card_share_unavailable:'This browser cannot share image files. Use WhatsApp — Invite + Card Link to send the invitation with the website card link instead.',
+card_share_unavailable:'This browser cannot share image files. Use WhatsApp — Invite + Card Link to send the invitation with the Google Drive card link instead.',
 card_share_load_failed:'The card image could not be loaded. Tap Share Card + Invite to retry, or use WhatsApp — Invite + Card Link to send the links instead.',
 card_share_failed:'Image sharing did not complete. Try again, or use WhatsApp — Invite + Card Link to send the links instead.',
 card_share_copy_failed:'Copy failed. Use WhatsApp — Invite + Card Link to open the complete invitation message.',
@@ -1507,9 +1507,9 @@ card_share:'कार्ड + निमंत्रण साझा करें
 card_kicker:'सप्रेम निमंत्रण',card_title:'हमारे विवाह का कार्ड',card_view:'पूरा कार्ड देखें',card_download:'कार्ड डाउनलोड करें',
 scroll_hint:'नीचे देखें',scroll_down:'निमंत्रण आगे पढ़ने के लिए नीचे जाएँ',
 wa_message_help:'तारांकन (*) के बीच लिखा पाठ WhatsApp में बोल्ड दिखता है। व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें, प्राप्तकर्ता चुनें, संदेश जाँचें और फिर भेजें दबाएँ। कोई संदेश अपने-आप नहीं भेजा जाता।',wa_format_guide:'WhatsApp फ़ॉर्मेटिंग गाइड',
-card_share_help:'निमंत्रण संदेश में आपका व्यक्तिगत निमंत्रण लिंक और इसी वेबसाइट पर मौजूद फूलों वाले कार्ड का लिंक शामिल है। समर्थित फ़ोन पर कार्ड + निमंत्रण साझा करें से उसी कार्ड की तस्वीर भी जोड़ सकते हैं; WhatsApp चुनकर भेजने से पहले कैप्शन जाँचें। कैप्शन गायब या छोटा हो तो संदेश कॉपी करके अलग से पेस्ट करें। कार्ड की तस्वीर में अतिथि का नाम नहीं जोड़ा जाता है।',
+card_share_help:'निमंत्रण संदेश में आपका व्यक्तिगत निमंत्रण लिंक और Google Drive कार्ड लिंक शामिल है। समर्थित फ़ोन पर कार्ड + निमंत्रण साझा करें से इस वेबसाइट के फूलों वाले कार्ड की तस्वीर भी जोड़ सकते हैं; WhatsApp चुनकर भेजने से पहले कैप्शन जाँचें। कैप्शन गायब या छोटा हो तो संदेश कॉपी करके अलग से पेस्ट करें। कार्ड की तस्वीर में अतिथि का नाम नहीं जोड़ा जाता है।',
 card_share_loading:'कार्ड की तस्वीर तैयार हो रही है…',card_share_ready:'कार्ड तैयार है — कार्ड + निमंत्रण साझा करें दबाएँ और WhatsApp चुनें।',
-card_share_unavailable:'यह ब्राउज़र तस्वीर साझा नहीं कर सकता। इसी वेबसाइट के कार्ड लिंक सहित निमंत्रण भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
+card_share_unavailable:'यह ब्राउज़र तस्वीर साझा नहीं कर सकता। Google Drive कार्ड लिंक सहित निमंत्रण भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
 card_share_load_failed:'कार्ड की तस्वीर लोड नहीं हुई। फिर कोशिश करने के लिए कार्ड + निमंत्रण साझा करें दबाएँ, या लिंक भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
 card_share_failed:'तस्वीर साझा नहीं हो सकी। फिर कोशिश करें, या लिंक भेजने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
 card_share_copy_failed:'संदेश कॉपी नहीं हुआ। पूरा निमंत्रण संदेश खोलने के लिए व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें।',
@@ -1713,6 +1713,7 @@ function toast(msg){$('#toastMsg').textContent=msg;const el=$('#toast');el.class
 async function copyText(s){try{await navigator.clipboard.writeText(s);return true}catch(e){
  const ta=document.createElement('textarea');ta.value=s;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();
  let ok=false;try{ok=document.execCommand('copy')}catch(_){}ta.remove();return ok}}
+const INVITATION_CARD_URL='https://drive.google.com/file/d/106Ea8npzh8hHfZMSrPyXwz88WTf2Op0Q/view?usp=sharing';
 const INVITATION_CARD_SRC='assets/Elegant%20Floral%20Indian%20Wedding%20Invitation.png';
 function coupleTitleText(lang){return lang==='hi'?W.couple.nameHi:W.couple.nameEn}
 function waOpen(num,text){window.open('https://wa.me/'+(num||'')+'?text='+encodeURIComponent(text),'_blank')}
@@ -1774,12 +1775,10 @@ Warm regards,
  const label=lang==='hi'?'आपका व्यक्तिगत निमंत्रण':lang==='dual'?'Your personal invitation / आपका व्यक्तिगत निमंत्रण':'Your personal invitation';
  const cardLabel=lang==='hi'?'विवाह का कार्ड':lang==='dual'?'Wedding card / विवाह का कार्ड':'Wedding card';
  const invitationURL=String(url||'').trim();
- const cardURL=new URL(INVITATION_CARD_SRC,invitationURL||location.href).href;
  const links=[];
- // Relative artwork follows the deployed site's URL; local previews stay local until publishing.
  // WhatsApp uses *bold* and - lists, not Markdown links. Keep each full URL on its own line.
  if(invitationURL)links.push('🔗 *'+label+'*\n'+invitationURL);
- links.push('🖼️ *'+cardLabel+'*\n'+cardURL);
+ links.push('🖼️ *'+cardLabel+'*\n'+INVITATION_CARD_URL);
  return parts.join('\n\n──────────\n\n')+'\n\n'+links.join('\n\n');
 }
 function isLocalInvitationURL(value){
@@ -1794,7 +1793,7 @@ async function nativeShare(url,message=t('share_text')){
  if(navigator.share){try{await navigator.share({title:document.title,text:message,url})}catch(e){}}
  else{await copyText(message+'\n\n'+url);toast(t('copied_fallback'))}
 }
-// wa.me shares the invitation and card links as text; Web Share can attach the same PNG.
+// wa.me shares the invitation and Drive links as text; Web Share attaches the bundled floral PNG.
 let invitationCardFile=null,invitationCardPending=null,invitationCardSharing=false;
 function cardShareStatus(key){
  $$('.card-share-status').forEach(el=>{
