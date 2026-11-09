@@ -1,1 +1,11 @@
 .DS_Store
+    
+# Deployment credentials must never be committed.
+**/satyam-server/
+*.pem
+*.ppk
+id_rsa
+id_ed25519
+
+# Visitor records contain guest names — keep them on the server, not in git.
+tracking/data/*.json

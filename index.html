@@ -562,14 +562,25 @@ body[data-lang=hi] .cd-cell span{letter-spacing:.04em}
 .powered-tag svg{width:12px;height:12px;flex:none;color:#EBCF9F}
 .card-tools a:hover{background:rgba(255,233,189,.1);box-shadow:inset 0 0 0 1px rgba(235,207,159,.3)}
 .card-tools a:focus-visible{outline:3px solid var(--burgundy);outline-offset:3px}
-.scroll-hint{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:145;display:grid;justify-items:center;gap:2px;width:56px;min-height:58px;padding:6px 2px 10px;border:1px solid var(--gold);border-radius:999px;background:var(--ivory);color:var(--burgundy);box-shadow:0 6px 18px -7px rgba(88,54,44,.45);touch-action:manipulation;transition:background .2s,box-shadow .2s}
-.scroll-hint span{font:700 10px/1.4 var(--fb);white-space:nowrap}
-.scroll-hint svg{width:24px;height:24px;animation:scrollNudge 1.8s ease-in-out infinite}
-.scroll-hint:hover{background:#F7EDDC;box-shadow:0 8px 22px -7px rgba(88,54,44,.55)}
+.scroll-hint{position:fixed;left:50%;bottom:calc(12px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:145;display:grid;place-items:center;width:44px;height:44px;padding:0;color:var(--burgundy);touch-action:manipulation;transition:color .2s}
+.scroll-hint svg{width:28px;height:28px;animation:scrollNudge 1.8s ease-in-out infinite}
+.scroll-hint .scroll-outline{stroke:var(--ivory);stroke-width:4.5}
+.scroll-hint:hover{color:var(--wine)}
+/* One-time nudge so a guest who never scrolls still notices there is more below.
+   It floats outside the card and hides as soon as they scroll. */
+.scroll-cue{position:fixed;left:50%;bottom:calc(62px + env(safe-area-inset-bottom));z-index:146;max-width:calc(100vw - 32px);padding:9px 16px;border-radius:999px;background:var(--burgundy);color:var(--ivory);font:600 12px/1.35 var(--fb);text-align:center;box-shadow:0 12px 30px -14px rgba(75,31,32,.75);opacity:0;transform:translate(-50%,8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;display:flex;align-items:center;justify-content:center;gap:8px}
+.scroll-cue .finger{width:22px;height:22px;flex:none;animation:fingerSwipe 2s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes fingerSwipe{0%,100%{transform:translateY(6px);opacity:.7}42%,58%{transform:translateY(-10px);opacity:1}}
+.scroll-cue.on{opacity:1;transform:translate(-50%,0)}
+.scroll-cue::after{content:'';position:absolute;left:50%;bottom:-4px;width:9px;height:9px;background:var(--burgundy);transform:translateX(-50%) rotate(45deg);border-radius:1px}
+.scroll-hint.cue::before{content:'';position:absolute;inset:-6px;border-radius:999px;border:1px solid rgba(115,30,48,.5);animation:cueRing 1.6s ease-out infinite;pointer-events:none}
+.scroll-hint.cue svg{animation-duration:1.15s}
+@keyframes cueRing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+body.locked .scroll-cue{opacity:0}
 body.locked .scroll-hint{visibility:hidden;pointer-events:none}
 body.locked .scroll-hint svg{animation-play-state:paused}
 @keyframes scrollNudge{0%,20%,100%{transform:translateY(-2px);opacity:.7}55%{transform:translateY(4px);opacity:1}}
-@media(prefers-reduced-motion:reduce){.scroll-hint svg{animation:none!important;transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.scroll-hint svg{animation:none!important;transform:none;opacity:1}.scroll-cue .finger{animation:none!important;transform:none}}
 #langPill{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:150}
 #langPill #langToggle{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;width:62px;height:32px;padding:0 8px;border:1px solid rgba(182,138,66,.55);border-radius:999px;background:rgba(255,249,239,.94);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(73,23,34,.1);font:700 10px/1 'Manrope',sans-serif;color:var(--burgundy);transition:background .2s,border-color .2s;touch-action:manipulation}
 #langToggle::before{content:'';position:absolute;inset:-6px 0;border-radius:inherit}
@@ -1065,9 +1076,9 @@ body[data-lang=en] .only-hi,body[data-lang=hi] .only-en,body:not([data-lang=dual
   </a>
 </div>
 <button class="scroll-hint" id="scrollHint" type="button" data-act="scroll-down" data-i18n-aria="scroll_down" hidden>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 6 6 6-6M6 12l6 6 6-6"/></svg>
-  <span data-i18n="scroll_hint"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="scroll-outline" d="m6 6 6 6 6-6M6 12l6 6 6-6"/><path d="m6 6 6 6 6-6M6 12l6 6 6-6"/></svg>
 </button>
+<div class="scroll-cue" id="scrollCue" aria-hidden="true"><svg class="finger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6.2a1.7 1.7 0 0 1 3.4 0V11"/><path d="M12.4 11V9.4a1.6 1.6 0 0 1 3.2 0V11"/><path d="M15.6 11v-1a1.55 1.55 0 0 1 3.1 0v4.6a5.4 5.4 0 0 1-5.4 5.4h-1.2a4.6 4.6 0 0 1-3.6-1.8L5.2 14a1.6 1.6 0 0 1 2.4-2.1L9 13.6"/></svg><span data-i18n="scroll_cue"></span></div>
 </main>
 
 <section id="closingScene" hidden role="dialog" aria-modal="true" aria-label="Closing envelope" tabindex="-1">
@@ -1177,11 +1188,17 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const VALID=['en','hi','dual'];
 const SANGAM='<svg class="sg" viewBox="0 0 180 44" aria-hidden="true"><path pathLength="1" d="M6 7 C62 9 114 21 174 36"/><path pathLength="1" d="M6 37 C62 35 114 23 174 36"/><path pathLength="1" d="M6 22 C64 22 118 29 174 36"/><circle cx="174" cy="36" r="2.4"/></svg>';
 /* ===== OWNER CONFIG =====
-   RSVP_ENDPOINT : paste your Apps Script /exec URL. Empty = WhatsApp mode, nothing is logged.
+   TRACK_ENDPOINT: where opens are recorded. GitHub Pages has no server, so the
+                   published site posts to the tracker hosted on wa.dakshsoft.in.
+                   Anywhere else (local preview, the tracker itself) it uses
+                   /api/track on the same origin.
+   RSVP_ENDPOINT : optional Google Apps Script /exec URL. When set, the same events are
+                   also mirrored to that sheet and the RSVP form posts there.
    MUSIC_SRC     : your instrumental track. Empty = use the built-in shehnai synth instead.
-   TRACK_OPENS   : log every invitation open (who opened it, when, from where) to the sheet.
+   TRACK_OPENS   : log every invitation open (who opened it, when, from where).
    GEO_ON_OPEN   : true asks for GPS the instant the invitation opens. Off by default, so
                    guests are only located if they tap the location chip themselves. */
+const TRACK_ENDPOINT=/\.github\.io$/i.test(location.hostname)?'https://wa.dakshsoft.in/api/track':'';
 const RSVP_ENDPOINT='';
 const MUSIC_SRC='assets/wedding-music.mp3';
 const TRACK_OPENS=true;
@@ -1192,7 +1209,7 @@ const GEO_ON_OPEN=false;
    TRACK_ACTIVITY logs one row per button tap. */
 const TRACK_IP=true;
 const TRACK_ACTIVITY=true;
-const state={guest:'',first:'',sender:null,sharedBy:null,wishesTo:'',lang:'en',relation:'guest',honor:'',familyMode:false,tone:'warm',role:'',geo:null,geoRequested:false,geoPending:null,geoMsg:'',visitCount:'',openCount:'',opened:false,opening:false,knotUntied:false,knotOpening:false,ioDone:false};
+const state={guest:'',first:'',sender:null,sharedBy:null,wishesTo:'',lang:'en',relation:'guest',honor:'',familyMode:false,tone:'warm',role:'',geo:null,geoRequested:false,geoPending:null,geoMsg:'',visitCount:'',openCount:'',vid:'',visitSent:false,cueDone:false,opened:false,opening:false,knotUntied:false,knotOpening:false,ioDone:false};
 const VALID_REL=['friend','family','relative','colleague','elder'];
 const VALID_TONES=['formal','warm','family','friend'];
 const HONOR_HI={'ji':'\u091c\u0940','bhai':'\u092d\u093e\u0908','sir':'\u091c\u0940','ji sahab':'\u091c\u0940 \u0938\u093e\u0939\u092c'};
@@ -1262,6 +1279,21 @@ function clientMeta(){
   online:String(n.onLine)
  };
 }
+/* Stable, anonymous per-browser id. It lets the sheet tell two phones apart when the
+   same guest link is opened on both, without collecting anything identifying. */
+function visitorId(){
+ if(state.vid)return state.vid;
+ let id='';
+ try{id=localStorage.getItem('pp_vid')||''}catch(e){}
+ if(!/^[A-Za-z0-9_-]{8,48}$/.test(id)){
+  try{
+   id=(self.crypto&&self.crypto.randomUUID)?self.crypto.randomUUID():('v'+Date.now().toString(36)+Math.random().toString(36).slice(2,10));
+   localStorage.setItem('pp_vid',id);
+  }catch(e){id=id||('v'+Date.now().toString(36)+Math.random().toString(36).slice(2,10))}
+ }
+ state.vid=id;
+ return id;
+}
 /* Resolved once per page load and reused by every event below. */
 let ipP=null;
 function clientIP(){
@@ -1293,21 +1325,32 @@ function clientIP(){
  })();
  return ipP;
 }
-/* Shouts in the console when nothing can reach the sheet, so an empty endpoint is
-   never a silent mystery again. */
+/* Where tracking events go: this site's own JSON tracker, plus the optional Google
+   Sheet mirror. Kept in one place so every event lands in the same destinations. */
+function trackingTargets(){
+ const urls=[];
+ const local=TRACK_ENDPOINT||((location.protocol==='http:'||location.protocol==='https:')?'/api/track':'');
+ if(local)urls.push(local);
+ if(RSVP_ENDPOINT&&urls.indexOf(RSVP_ENDPOINT)<0)urls.push(RSVP_ENDPOINT);
+ return urls;
+}
+/* Shouts in the console when nothing can record an open, so an empty config is never
+   a silent mystery again. */
 function reportTracking(){
- if(RSVP_ENDPOINT&&TRACK_OPENS){
-  console.info('[Prem Patra] tracking ON → '+RSVP_ENDPOINT);
+ const urls=trackingTargets();
+ if(urls.length&&TRACK_OPENS){
+  console.info('[Prem Patra] tracking ON → '+urls.join(' + '));
   return;
  }
- console.warn('[Prem Patra] TRACKING IS OFF — nothing will reach your Google Sheet.'+
-  (!RSVP_ENDPOINT?'\n  • RSVP_ENDPOINT is empty. Paste your Apps Script /exec URL into the OWNER CONFIG block of index.html (line ~1033).':'\n  • TRACK_OPENS is false.')+
-  '\n  • Deploy google-apps-script/Code.gs first — see SETUP.md.');
+ console.warn('[Prem Patra] TRACKING IS OFF — no open will be recorded.'+
+  (!TRACK_OPENS?'\n  • TRACK_OPENS is false.':
+   '\n  • No tracking endpoint: TRACK_ENDPOINT is empty and this page is not served over http(s), so /api/track cannot be reached.')+
+  '\n  • Run `node tracking/server.mjs` and open http://localhost:3010/, or set TRACK_ENDPOINT to the tracker URL.');
 }
 /* kind: 'visit' (an open), 'geo' (location shared from the chip), 'action' (a tap),
    'blessing' (the blessings button). `extra` adds per-event fields. */
 async function pingVisit(kind,extra){
- if(!RSVP_ENDPOINT||!TRACK_OPENS)return;
+ if(!TRACK_OPENS||!trackingTargets().length)return;
  kind=kind||'visit';
  if(kind==='visit'){
   let n=1;
@@ -1323,24 +1366,52 @@ async function pingVisit(kind,extra){
   }catch(e){}
   state.openCount=String(t);
  }
- const ip=await clientIP();
  const data=Object.assign({
   type:kind,
   guest:state.guest||'',sender:state.sender||'',sharedBy:state.sharedBy||'',
   relation:state.relation,honor:state.honor||'',family:state.familyMode?'1':'0',
   lang:state.lang,tone:state.tone,role:state.role||'',
   device:deviceInfo(),count:state.visitCount||'1',opens:state.openCount||'1',
-  geo:state.geo?(state.geo.place+' ('+state.geo.la+','+state.geo.lo+')'):'',
-  ip:ip?ip.ip:'',iploc:ip?ip.city:'',isp:ip?ip.isp:''
+  vid:visitorId(),
+  geo:state.geo?(state.geo.place+' ('+state.geo.la+','+state.geo.lo+')'):''
  },clientMeta(),extra||{});
- /* no-cors means the response is opaque: this confirms the row was dispatched, not
-    that the sheet accepted it. A wrong URL looks identical from here. */
- console.info('[Prem Patra] → '+data.type+(data.action?' ('+data.action+')':'')+' sent to the sheet');
- fetch(RSVP_ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(data)}).catch(()=>{});
+ /* A slow IP lookup must never swallow the row: wait at most 2.5s, and if the tab is
+    hidden meanwhile the pending visit is flushed without it. The sheet counts opens
+    itself, so these columns are only extra detail. */
+ if(kind==='visit')pendingVisit=data;
+ const ip=await Promise.race([clientIP(),new Promise(r=>setTimeout(()=>r(null),2500))]);
+ if(pendingVisit===data)pendingVisit=null;
+ else if(kind==='visit')return;   // already flushed on hide, without the IP
+ data.ip=ip?ip.ip:'';data.iploc=ip?ip.city:'';data.isp=ip?ip.isp:'';
+ sendTracking(data);
+}
+/* Set while a visit row waits on the IP lookup, so a tab closed in that window still
+   sends what it has instead of losing the open entirely. */
+let pendingVisit=null;
+function flushPendingVisit(){
+ if(!pendingVisit)return;
+ const data=pendingVisit;pendingVisit=null;
+ sendTracking(data);
+}
+addEventListener('pagehide',flushPendingVisit);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')flushPendingVisit()});
+/* sendBeacon is still delivered if the guest closes or backgrounds the tab straight
+   after opening; keepalive fetch is the fallback. Apps Script reads both as
+   form-encoded POST fields. The response is opaque, so this confirms dispatch only. */
+function sendTracking(data){
+ const urls=trackingTargets();
+ if(!urls.length)return;
+ urls.forEach(url=>{
+  const body=new URLSearchParams(data);
+  let sent=false;
+  try{if(navigator.sendBeacon)sent=navigator.sendBeacon(url,body)}catch(e){sent=false}
+  if(!sent)try{fetch(url,{method:'POST',mode:'no-cors',keepalive:true,body:body}).catch(()=>{})}catch(e){}
+ });
+ console.info('[Prem Patra] → '+data.type+(data.action?' ('+data.action+')':'')+' sent to '+urls.length+' endpoint(s)');
 }
 /* One row per interaction, so the sheet shows the whole journey, not just the RSVP. */
 function track(action,detail){
- if(!RSVP_ENDPOINT||!TRACK_ACTIVITY)return;
+ if(!TRACK_ACTIVITY||!trackingTargets().length)return;
  pingVisit('action',{action:String(action||''),detail:String(detail||'').slice(0,400)});
 }
 async function reverseGeo(la,lo){
@@ -1394,14 +1465,19 @@ async function submitRSVP(){
  const att=(document.querySelector('input[name=rAtt]:checked')||{}).value||'yes';
  const msg=sanitizeText($('#rMsg').value,600);
  const geoTxt=state.geo?(state.geo.place+' ('+state.geo.la+','+state.geo.lo+')'):'';
- const data=Object.assign({type:'rsvp',guest:state.guest||'',name:name,relation:state.relation,family:state.familyMode?'1':'0',lang:state.lang,attending:att==='yes'?'Yes':'No',msg:msg,geo:geoTxt,sender:state.sender||'',sharedBy:state.sharedBy||'',device:deviceInfo(),count:state.visitCount||'1',opens:state.openCount||'1'},clientMeta());
+ const data=Object.assign({type:'rsvp',guest:state.guest||'',name:name,relation:state.relation,family:state.familyMode?'1':'0',lang:state.lang,attending:att==='yes'?'Yes':'No',msg:msg,geo:geoTxt,sender:state.sender||'',sharedBy:state.sharedBy||'',device:deviceInfo(),count:state.visitCount||'1',opens:state.openCount||'1',vid:visitorId()},clientMeta());
  if(RSVP_ENDPOINT){
   const btn=$('#rsvpSend');btn.disabled=true;
   /* Apps Script returns no CORS headers, so a cors-mode POST is already delivered before its
      response is blocked — retrying it would append a duplicate row. no-cors posts exactly once
      and resolves with an opaque response, so there is nothing to catch. */
-  try{await fetch(RSVP_ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(data)})}catch(e){}
- }else{waOpen(wishesRecipient(),waRSVP(att,msg,state.geo?state.geo.place:'')+'\n\n\u2014 *'+name+'*')}
+  try{await fetch(RSVP_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams(data)})}catch(e){}
+ }else{
+  /* No Sheet configured: still record the RSVP in the JSON tracker, then hand the guest
+     to WhatsApp so the family receives the message as before. */
+  if(trackingTargets().length)sendTracking(Object.assign({type:'rsvp',guest:state.guest||'',name:name,relation:state.relation,family:state.familyMode?'1':'0',lang:state.lang,attending:att==='yes'?'Yes':'No',msg:msg,geo:geoTxt,sender:state.sender||'',sharedBy:state.sharedBy||'',device:deviceInfo(),count:state.visitCount||'1',opens:state.openCount||'1',vid:visitorId()},clientMeta()));
+  waOpen(wishesRecipient(),waRSVP(att,msg,state.geo?state.geo.place:'')+'\n\n\u2014 *'+name+'*')
+ }
  $('#rsvpForm').hidden=true;$('#rsvpDone').hidden=false;
  $('#rsvpSenderName').textContent=name;
  $('#rsvpDoneMsg').textContent=(att==='yes'?t('rsvp_see'):t('rsvp_miss'));
@@ -1460,7 +1536,7 @@ f_wishes_to:'WhatsApp number for wishes',wishes_help:'Choose where guests send t
 share_local_help:'This is a local preview link, not a public invitation. Open the published HTTPS website and create the link there before sharing on WhatsApp.',
 card_share:'Share Card + Invite',card_link_share:'WhatsApp — Invite + Card Link',
 card_kicker:'A Keepsake',card_title:'Our Wedding Card',card_view:'View Full Size',card_download:'Download Card',
-scroll_hint:'Scroll',scroll_down:'Scroll down to continue reading the invitation',
+scroll_down:'Scroll down to continue reading the invitation',scroll_cue:'Scroll to read the invitation',
 wa_message_help:'Text between asterisks (*) appears bold in WhatsApp. Choose WhatsApp — Invite + Card Link, select the recipient, review the message, then tap Send. Nothing is sent automatically.',wa_format_guide:'WhatsApp formatting guide',
 card_share_help:'The message includes your personalized invitation link and the Google Drive card link. Share Card + Invite can also attach the floral card image from this website on supported phones; choose WhatsApp and check the caption before sending. If the caption is missing or shortened, use Copy Message and paste it separately. The card artwork itself is not personalized.',
 card_share_loading:'Preparing the card image…',card_share_ready:'Card ready — tap Share Card + Invite and choose WhatsApp.',
@@ -1505,7 +1581,7 @@ baraat_live:'शाही बारात के संग चलें',baraat_
 share_local_help:'यह लोकल प्रीव्यू लिंक है, सार्वजनिक निमंत्रण नहीं। व्हाट्सऐप पर साझा करने से पहले प्रकाशित HTTPS वेबसाइट खोलकर वहाँ से लिंक बनाएँ।',
 card_share:'कार्ड + निमंत्रण साझा करें',card_link_share:'व्हाट्सऐप — निमंत्रण + कार्ड लिंक',
 card_kicker:'सप्रेम निमंत्रण',card_title:'हमारे विवाह का कार्ड',card_view:'पूरा कार्ड देखें',card_download:'कार्ड डाउनलोड करें',
-scroll_hint:'नीचे देखें',scroll_down:'निमंत्रण आगे पढ़ने के लिए नीचे जाएँ',
+scroll_down:'निमंत्रण आगे पढ़ने के लिए नीचे जाएँ',scroll_cue:'निमंत्रण पढ़ने के लिए नीचे स्क्रॉल करें',
 wa_message_help:'तारांकन (*) के बीच लिखा पाठ WhatsApp में बोल्ड दिखता है। व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें, प्राप्तकर्ता चुनें, संदेश जाँचें और फिर भेजें दबाएँ। कोई संदेश अपने-आप नहीं भेजा जाता।',wa_format_guide:'WhatsApp फ़ॉर्मेटिंग गाइड',
 card_share_help:'निमंत्रण संदेश में आपका व्यक्तिगत निमंत्रण लिंक और Google Drive कार्ड लिंक शामिल है। समर्थित फ़ोन पर कार्ड + निमंत्रण साझा करें से इस वेबसाइट के फूलों वाले कार्ड की तस्वीर भी जोड़ सकते हैं; WhatsApp चुनकर भेजने से पहले कैप्शन जाँचें। कैप्शन गायब या छोटा हो तो संदेश कॉपी करके अलग से पेस्ट करें। कार्ड की तस्वीर में अतिथि का नाम नहीं जोड़ा जाता है।',
 card_share_loading:'कार्ड की तस्वीर तैयार हो रही है…',card_share_ready:'कार्ड तैयार है — कार्ड + निमंत्रण साझा करें दबाएँ और WhatsApp चुनें।',
@@ -2097,6 +2173,7 @@ function liftLetter(){
 function untieKnot(){
  if(state.knotOpening||state.knotUntied||state.opening||state.opened)return;
  state.knotOpening=true;startInvitationMusic();IntroSfx.ribbon(RM);
+ track('tap','envelope-open');
  const thread=$('#envThread'),stage=$('#envStage'),hint=$('#tapHint');
  stage.classList.add('opening');thread.classList.add('untying');
  hint.dataset.i18n='env_knot_wait';hint.textContent=t('env_knot_wait');
@@ -2156,11 +2233,11 @@ function finishOpen(){
  /* Location is opt-in by default: the guest taps the chip in the RSVP card. Set
     GEO_ON_OPEN=true above to ask the moment the invitation opens instead. */
  if(GEO_ON_OPEN)attachGeo();
- pingVisit();
  initObservers();
  Petals.start();
  updateJourney();updateBaraat();updateParallax();syncScrollHint();
  syncMusicButton(true);
+ armScrollCue();trackScrollDepth();
 }
 function gateSubmit(){
  let name=sanitizeText($('#gName').value,60);
@@ -2171,6 +2248,7 @@ function gateSubmit(){
  state.lang=document.querySelector('input[name=gLang]:checked').value;
  try{localStorage.setItem('pp_guest',name);localStorage.setItem('pp_lang',state.lang)}catch(e){}
  applyLang(state.lang,true);
+ track('tap','gate-submit');
  $('#gate').classList.add('out');
  setTimeout(()=>{$('#gate').hidden=true;showEnvelope()},620);
 }
@@ -2178,7 +2256,7 @@ let pendingShow=null;
 function route(){
  const open=/#invite\/?/i.test(location.hash);
  $('#inviteApp').classList.toggle('vis',open);
- if(open){document.body.classList.add('locked')}
+ if(open){document.body.classList.add('locked');markOpen()}
  else if(pendingShow&&!state.opened){const f=pendingShow;pendingShow=null;f()}
  else{document.body.classList.toggle('locked',!state.opened&&$('#envScene')&&!$('#envScene').hidden)}
 }
@@ -2217,14 +2295,63 @@ function updateParallax(){
 }
 function syncScrollHint(){
  const root=document.scrollingElement||document.documentElement;
- $('#scrollHint').hidden=!state.opened||root.scrollHeight-root.scrollTop-root.clientHeight<=24;
+ const more=root.scrollHeight-root.scrollTop-root.clientHeight>24;
+ $('#scrollHint').hidden=!state.opened||!more;
+ /* Layout can still be settling while images load; hide the cue visually, but do not
+    mark it dismissed here or it would never get a chance to appear. */
+ if(!state.opened||!more){
+  $('#scrollCue').classList.remove('on');
+  $('#scrollHint').classList.remove('cue');
+ }
+}
+let cueTimer=null,cueTries=0;
+function armScrollCue(){
+ if(!state.opened||state.cueDone)return;
+ clearTimeout(cueTimer);
+ cueTries=0;
+ cueTimer=setTimeout(showScrollCue,900);
+}
+function showScrollCue(){
+ if(!state.opened||state.cueDone)return;
+ const root=document.scrollingElement||document.documentElement;
+ if(root.scrollTop>60)return;
+ /* Wait up to five seconds for the page to grow past the first screen. */
+ if(root.scrollHeight-root.clientHeight<=24){
+  if(cueTries++<5)cueTimer=setTimeout(showScrollCue,1000);
+  return;
+ }
+ $('#scrollCue').classList.add('on');
+ $('#scrollHint').classList.add('cue');
+ clearTimeout(cueTimer);
+ cueTimer=setTimeout(hideScrollCue,9000);
+}
+function hideScrollCue(){
+ clearTimeout(cueTimer);cueTimer=null;
+ state.cueDone=true;
+ const cue=$('#scrollCue');if(cue)cue.classList.remove('on');
+ const hint=$('#scrollHint');if(hint)hint.classList.remove('cue');
+}
+/* One event per depth milestone, so the dashboard shows whether a guest actually
+   read past the first screen instead of only opening it. */
+const scrollMarks=new Set();
+function trackScrollDepth(){
+ if(!state.opened)return;
+ const root=document.scrollingElement||document.documentElement;
+ const max=root.scrollHeight-root.clientHeight;
+ if(max<200)return;
+ if(root.scrollTop>60)hideScrollCue();
+ const pct=Math.min(100,Math.round((root.scrollTop/max)*100));
+ if(pct>0&&!scrollMarks.has('start')){scrollMarks.add('start');track('tap','scroll-start')}
+ [25,50,75,100].forEach(mark=>{
+  if(pct>=mark&&!scrollMarks.has(mark)){scrollMarks.add(mark);track('tap','scroll-'+mark)}
+ });
 }
 let ticking=false;
 function onScrollTick(){
  if(!state.opened||ticking)return;
  ticking=true;
  requestAnimationFrame(()=>{
-  updateJourney();updateBaraat();updateParallax();syncScrollHint();
+  updateJourney();updateBaraat();updateParallax();syncScrollHint();trackScrollDepth();
   ticking=false});
 }
 const CD_T=Date.parse('2026-11-24T00:00:00+05:30');
@@ -2366,7 +2493,7 @@ function foldReopen(){
 }
 function wire(){
  $('#envelope').addEventListener('click',handleEnvelopeClick);
- $('#skipIntro').addEventListener('click',()=>{if(!state.opened){startInvitationMusic();finishOpen()}});
+ $('#skipIntro').addEventListener('click',()=>{if(!state.opened){track('tap','skip-intro');startInvitationMusic();finishOpen()}});
  $('#gateBtn').addEventListener('click',gateSubmit);
  $('#gName').addEventListener('keydown',e=>{if(e.key==='Enter')gateSubmit()});
  $('#langToggle').addEventListener('click',()=>{
@@ -2391,9 +2518,17 @@ function wire(){
  const layoutObserver=new ResizeObserver(onScrollTick);
  layoutObserver.observe($('#app'));
 }
+/* Record the open when the invitation is actually revealed, not when the envelope
+   animation ends — leaving mid-animation still counts as having opened it. */
+function markOpen(){
+ if(state.visitSent)return;
+ state.visitSent=true;
+ pingVisit('visit');
+}
 function showEnvelope(){
  $('#envScene').hidden=false;document.body.classList.add('locked');
  updateEnvelopeText();
+ markOpen();
 }
 function showGate(){$('#gate').hidden=false;document.body.classList.add('locked')}
 function mountCalDots(){

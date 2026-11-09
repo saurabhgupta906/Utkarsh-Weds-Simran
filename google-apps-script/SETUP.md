@@ -22,7 +22,8 @@ wired up, every invitation open, shared location and RSVP lands in the sheet aut
 11. Open the `/exec` URL directly. It should show
     `{"ok":true,"message":"Wedding visitor endpoint is active."}`.
 
-The script creates the **Visitor Details** tab automatically.
+The script creates the **Visitor Details** tab automatically, plus a **Visitor Summary**
+tab that groups everything per invited guest.
 
 If you change `Code.gs` later, use **Deploy → Manage deployments → Edit → New version → Deploy**.
 Re-running an existing deployment without a new version keeps serving the old code.
@@ -49,9 +50,29 @@ Each row has a **Type** telling you what happened:
 Because location is opt-in, a `visit` row usually arrives first with an empty `Location`,
 and a `geo` row follows if the guest chooses to share it. Match rows on `Invited Guest`.
 
-`Total Opens` counts how many times **that guest** has opened the invitation — it is stored
-in their browser, so it survives closing the tab, and it is tracked per guest name in case
-one phone is passed around the family. `Visit Count` is the count within a single session.
+`Total Opens` counts how many times **that guest** has opened the invitation. The script
+counts the `visit` rows in the sheet itself, so it stays correct even when a guest clears
+browser storage or opens the link on a second phone. `Visit Count` is the count within a
+single session.
+
+### Visitor Summary
+
+Every `visit`, `geo`, `rsvp` and `blessing` write also refreshes the **Visitor Summary**
+tab. It has one line per invited guest:
+
+| Column | Meaning |
+|---|---|
+| `Opens` | number of `visit` rows for that guest |
+| `Unique Devices` | distinct `Visitor ID` values (older rows fall back to IP + user agent) |
+| `First Open` / `Last Open` | server timestamps |
+| `Last Event` | what happened last (`visit`, `rsvp`, …) |
+| `Device`, `City`, `IP` | from the most recent row |
+| `RSVP`, `Submitted Name`, `Message` | filled in when they submit the form |
+
+The tab is rebuilt from **Visitor Details**, so deleting or editing a row there and choosing
+**Wedding invites → Rebuild visitor summary** in the spreadsheet menu brings the summary
+back in sync. `action` rows are skipped during the rebuild because they are the most
+frequent and do not change who opened what.
 
 Filter the `Type` column to `action` to watch the whole journey — who opened it, whether
 they switched language, downloaded the calendar, shared it, and how far they got.
@@ -75,7 +96,7 @@ and `Browser Language`.
 `Location` · `Sender` · `Shared By` · `Device` · `Visit Count` · `Referral` ·
 `Browser Language` · `Platform` · `Mobile` · `Screen` · `Viewport` · `Timezone` ·
 `UTC Offset` · `Local Time` · `Referrer` · `Online` · `User Agent` · `Invitation URL` ·
-`IP` · `IP Location` · `ISP` · `Total Opens` · `Action` · `Detail`
+`IP` · `IP Location` · `ISP` · `Total Opens` · `Action` · `Detail` · `Visitor ID`
 
 `Number of Guests` is reserved — the form does not currently ask for it, so it stays empty.
 `Referrer` shows the site that sent them (often blank, since WhatsApp and most apps strip

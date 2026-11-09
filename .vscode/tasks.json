@@ -15,6 +15,34 @@
 			"isBackground": true,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Serve wedding site with tracking",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"${workspaceFolder}/tracking/server.mjs"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Start wedding control room (Docker)",
+			"type": "shell",
+			"command": "docker",
+			"args": [
+				"compose",
+				"-f",
+				"${workspaceFolder}/wedding-event/wedding-control-room/compose.local.yml",
+				"up",
+				"--build",
+				"-d",
+				"--wait"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }
