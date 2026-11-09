@@ -565,21 +565,10 @@ body[data-lang=hi] .cd-cell span{letter-spacing:.04em}
 .scroll-hint svg{width:28px;height:28px;animation:scrollNudge 1.8s ease-in-out infinite}
 .scroll-hint .scroll-outline{stroke:var(--ivory);stroke-width:4.5}
 .scroll-hint:hover{color:var(--wine)}
-/* One-time nudge so a guest who never scrolls still notices there is more below.
-   It floats outside the card and hides as soon as they scroll. */
-.scroll-cue{position:fixed;left:50%;bottom:calc(62px + env(safe-area-inset-bottom));z-index:146;max-width:calc(100vw - 32px);padding:9px 16px;border-radius:999px;background:var(--burgundy);color:var(--ivory);font:600 12px/1.35 var(--fb);text-align:center;box-shadow:0 12px 30px -14px rgba(75,31,32,.75);opacity:0;transform:translate(-50%,8px);transition:opacity .35s ease,transform .35s ease;pointer-events:none;display:flex;align-items:center;justify-content:center;gap:8px}
-.scroll-cue .finger{width:22px;height:22px;flex:none;animation:fingerSwipe 2s cubic-bezier(.45,0,.55,1) infinite}
-@keyframes fingerSwipe{0%,100%{transform:translateY(6px);opacity:.7}42%,58%{transform:translateY(-10px);opacity:1}}
-.scroll-cue.on{opacity:1;transform:translate(-50%,0)}
-.scroll-cue::after{content:'';position:absolute;left:50%;bottom:-4px;width:9px;height:9px;background:var(--burgundy);transform:translateX(-50%) rotate(45deg);border-radius:1px}
-.scroll-hint.cue::before{content:'';position:absolute;inset:-6px;border-radius:999px;border:1px solid rgba(115,30,48,.5);animation:cueRing 1.6s ease-out infinite;pointer-events:none}
-.scroll-hint.cue svg{animation-duration:1.15s}
-@keyframes cueRing{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.55);opacity:0}}
-body.locked .scroll-cue{opacity:0}
 body.locked .scroll-hint{visibility:hidden;pointer-events:none}
 body.locked .scroll-hint svg{animation-play-state:paused}
 @keyframes scrollNudge{0%,20%,100%{transform:translateY(-2px);opacity:.7}55%{transform:translateY(4px);opacity:1}}
-@media(prefers-reduced-motion:reduce){.scroll-hint svg{animation:none!important;transform:none;opacity:1}.scroll-cue .finger{animation:none!important;transform:none}}
+@media(prefers-reduced-motion:reduce){.scroll-hint svg{animation:none!important;transform:none;opacity:1}}
 #langPill{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:150}
 #langPill #langToggle{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;width:62px;height:32px;padding:0 8px;border:1px solid rgba(182,138,66,.55);border-radius:999px;background:rgba(255,249,239,.94);backdrop-filter:blur(8px);box-shadow:0 4px 12px rgba(73,23,34,.1);font:700 10px/1 'Manrope',sans-serif;color:var(--burgundy);transition:background .2s,border-color .2s;touch-action:manipulation}
 #langToggle::before{content:'';position:absolute;inset:-6px 0;border-radius:inherit}
@@ -1077,7 +1066,6 @@ body[data-lang=en] .only-hi,body[data-lang=hi] .only-en,body:not([data-lang=dual
 <button class="scroll-hint" id="scrollHint" type="button" data-act="scroll-down" data-i18n-aria="scroll_down" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="scroll-outline" d="m6 6 6 6 6-6M6 12l6 6 6-6"/><path d="m6 6 6 6 6-6M6 12l6 6 6-6"/></svg>
 </button>
-<div class="scroll-cue" id="scrollCue" aria-hidden="true"><svg class="finger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V6.2a1.7 1.7 0 0 1 3.4 0V11"/><path d="M12.4 11V9.4a1.6 1.6 0 0 1 3.2 0V11"/><path d="M15.6 11v-1a1.55 1.55 0 0 1 3.1 0v4.6a5.4 5.4 0 0 1-5.4 5.4h-1.2a4.6 4.6 0 0 1-3.6-1.8L5.2 14a1.6 1.6 0 0 1 2.4-2.1L9 13.6"/></svg><span data-i18n="scroll_cue"></span></div>
 </main>
 
 <section id="closingScene" hidden role="dialog" aria-modal="true" aria-label="Closing envelope" tabindex="-1">
@@ -1208,7 +1196,7 @@ const GEO_ON_OPEN=false;
    TRACK_ACTIVITY logs one row per button tap. */
 const TRACK_IP=true;
 const TRACK_ACTIVITY=true;
-const state={guest:'',first:'',sender:null,sharedBy:null,wishesTo:'',lang:'en',relation:'guest',honor:'',familyMode:false,tone:'warm',role:'',geo:null,geoRequested:false,geoPending:null,geoMsg:'',visitCount:'',openCount:'',vid:'',visitSent:false,cueDone:false,opened:false,opening:false,knotUntied:false,knotOpening:false,ioDone:false};
+const state={guest:'',first:'',sender:null,sharedBy:null,wishesTo:'',lang:'en',relation:'guest',honor:'',familyMode:false,tone:'warm',role:'',geo:null,geoRequested:false,geoPending:null,geoMsg:'',visitCount:'',openCount:'',vid:'',visitSent:false,opened:false,opening:false,knotUntied:false,knotOpening:false,ioDone:false};
 const VALID_REL=['friend','family','relative','colleague','elder'];
 const VALID_TONES=['formal','warm','family','friend'];
 const HONOR_HI={'ji':'\u091c\u0940','bhai':'\u092d\u093e\u0908','sir':'\u091c\u0940','ji sahab':'\u091c\u0940 \u0938\u093e\u0939\u092c'};
@@ -1535,7 +1523,7 @@ f_wishes_to:'WhatsApp number for wishes',wishes_help:'Choose where guests send t
 share_local_help:'This is a local preview link, not a public invitation. Open the published HTTPS website and create the link there before sharing on WhatsApp.',
 card_share:'Share Card + Invite',card_link_share:'WhatsApp — Invite + Card Link',
 card_kicker:'A Keepsake',card_title:'Our Wedding Card',card_view:'View Full Size',card_download:'Download Card',
-scroll_down:'Scroll down to continue reading the invitation',scroll_cue:'Scroll to read the invitation',
+scroll_down:'Scroll down to continue reading the invitation',
 wa_message_help:'Text between asterisks (*) appears bold in WhatsApp. Choose WhatsApp — Invite + Card Link, select the recipient, review the message, then tap Send. Nothing is sent automatically.',wa_format_guide:'WhatsApp formatting guide',
 card_share_help:'The message includes your personalized invitation link and the Google Drive card link. Share Card + Invite can also attach the floral card image from this website on supported phones; choose WhatsApp and check the caption before sending. If the caption is missing or shortened, use Copy Message and paste it separately. The card artwork itself is not personalized.',
 card_share_loading:'Preparing the card image…',card_share_ready:'Card ready — tap Share Card + Invite and choose WhatsApp.',
@@ -1580,7 +1568,7 @@ baraat_live:'शाही बारात के संग चलें',baraat_
 share_local_help:'यह लोकल प्रीव्यू लिंक है, सार्वजनिक निमंत्रण नहीं। व्हाट्सऐप पर साझा करने से पहले प्रकाशित HTTPS वेबसाइट खोलकर वहाँ से लिंक बनाएँ।',
 card_share:'कार्ड + निमंत्रण साझा करें',card_link_share:'व्हाट्सऐप — निमंत्रण + कार्ड लिंक',
 card_kicker:'सप्रेम निमंत्रण',card_title:'हमारे विवाह का कार्ड',card_view:'पूरा कार्ड देखें',card_download:'कार्ड डाउनलोड करें',
-scroll_down:'निमंत्रण आगे पढ़ने के लिए नीचे जाएँ',scroll_cue:'निमंत्रण पढ़ने के लिए नीचे स्क्रॉल करें',
+scroll_down:'निमंत्रण आगे पढ़ने के लिए नीचे जाएँ',
 wa_message_help:'तारांकन (*) के बीच लिखा पाठ WhatsApp में बोल्ड दिखता है। व्हाट्सऐप — निमंत्रण + कार्ड लिंक चुनें, प्राप्तकर्ता चुनें, संदेश जाँचें और फिर भेजें दबाएँ। कोई संदेश अपने-आप नहीं भेजा जाता।',wa_format_guide:'WhatsApp फ़ॉर्मेटिंग गाइड',
 card_share_help:'निमंत्रण संदेश में आपका व्यक्तिगत निमंत्रण लिंक और Google Drive कार्ड लिंक शामिल है। समर्थित फ़ोन पर कार्ड + निमंत्रण साझा करें से इस वेबसाइट के फूलों वाले कार्ड की तस्वीर भी जोड़ सकते हैं; WhatsApp चुनकर भेजने से पहले कैप्शन जाँचें। कैप्शन गायब या छोटा हो तो संदेश कॉपी करके अलग से पेस्ट करें। कार्ड की तस्वीर में अतिथि का नाम नहीं जोड़ा जाता है।',
 card_share_loading:'कार्ड की तस्वीर तैयार हो रही है…',card_share_ready:'कार्ड तैयार है — कार्ड + निमंत्रण साझा करें दबाएँ और WhatsApp चुनें।',
@@ -2236,7 +2224,7 @@ function finishOpen(){
  Petals.start();
  updateJourney();updateBaraat();updateParallax();syncScrollHint();
  syncMusicButton(true);
- armScrollCue();trackScrollDepth();
+ trackScrollDepth();
 }
 function gateSubmit(){
  let name=sanitizeText($('#gName').value,60);
@@ -2296,39 +2284,6 @@ function syncScrollHint(){
  const root=document.scrollingElement||document.documentElement;
  const more=root.scrollHeight-root.scrollTop-root.clientHeight>24;
  $('#scrollHint').hidden=!state.opened||!more;
- /* Layout can still be settling while images load; hide the cue visually, but do not
-    mark it dismissed here or it would never get a chance to appear. */
- if(!state.opened||!more){
-  $('#scrollCue').classList.remove('on');
-  $('#scrollHint').classList.remove('cue');
- }
-}
-let cueTimer=null,cueTries=0;
-function armScrollCue(){
- if(!state.opened||state.cueDone)return;
- clearTimeout(cueTimer);
- cueTries=0;
- cueTimer=setTimeout(showScrollCue,900);
-}
-function showScrollCue(){
- if(!state.opened||state.cueDone)return;
- const root=document.scrollingElement||document.documentElement;
- if(root.scrollTop>60)return;
- /* Wait up to five seconds for the page to grow past the first screen. */
- if(root.scrollHeight-root.clientHeight<=24){
-  if(cueTries++<5)cueTimer=setTimeout(showScrollCue,1000);
-  return;
- }
- $('#scrollCue').classList.add('on');
- $('#scrollHint').classList.add('cue');
- clearTimeout(cueTimer);
- cueTimer=setTimeout(hideScrollCue,9000);
-}
-function hideScrollCue(){
- clearTimeout(cueTimer);cueTimer=null;
- state.cueDone=true;
- const cue=$('#scrollCue');if(cue)cue.classList.remove('on');
- const hint=$('#scrollHint');if(hint)hint.classList.remove('cue');
 }
 /* One event per depth milestone, so the dashboard shows whether a guest actually
    read past the first screen instead of only opening it. */
@@ -2338,7 +2293,6 @@ function trackScrollDepth(){
  const root=document.scrollingElement||document.documentElement;
  const max=root.scrollHeight-root.clientHeight;
  if(max<200)return;
- if(root.scrollTop>60)hideScrollCue();
  const pct=Math.min(100,Math.round((root.scrollTop/max)*100));
  if(pct>0&&!scrollMarks.has('start')){scrollMarks.add('start');track('tap','scroll-start')}
  [25,50,75,100].forEach(mark=>{

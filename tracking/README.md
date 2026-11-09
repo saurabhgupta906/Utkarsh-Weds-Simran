@@ -70,12 +70,11 @@ name as `action`.
 
 ## Did they scroll?
 
-A one-time floating cue appears just above the chevron about a second after the card
-opens: an animated finger swipes upward and returns to its starting position, next to
-“Scroll to read the invitation”, while the chevron gets a pulsing ring. It disappears as
-soon as the guest scrolls past ~60 px (or after 9 seconds), so it never gets in the way.
-The card's own markup and styling are unchanged; the cue floats above it, and the finger
-animation is disabled for guests who prefer reduced motion.
+An animated downward-chevron button floats at the bottom center of the invitation,
+without a circular background, pulse ring, or visible text. Tapping it scrolls down.
+It hides at the bottom of the page and while the invitation is locked by an overlay.
+A translated accessible label remains available to screen readers, and the animation
+is disabled for guests who prefer reduced motion.
 
 Reading depth is recorded once per session as `scroll-start`, `scroll-25`, `scroll-50`,
 `scroll-75` and `scroll-100`. The dashboard shows:
