@@ -9,16 +9,15 @@
 <!-- Personalised links carry a guest name in ?to=, so keep this page out of search indexes. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23731E30'/%3E%3Cpath d='M16 27C9.4 21.4 5 17.6 5 13.2 5 9.6 7.8 7 11.2 7c1.9 0 3.6.9 4.8 2.4C17.2 7.9 18.9 7 20.8 7 24.2 7 27 9.6 27 13.2c0 4.4-4.4 8.2-11 13.8Z' fill='%23D9AE62'/%3E%3C/svg%3E">
-<!-- TODO: replace YOUR-DOMAIN.com with the live site URL in the four tags below.
-     WhatsApp/Facebook scrapers require absolute image URLs, so these cannot be relative.
-     Until you replace it these previews show no thumbnail. For a nicer card, crop a
-     landscape 1200x630 version of the photo and point og:image at that instead. -->
-<link rel="canonical" href="https://YOUR-DOMAIN.com/">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<!-- WhatsApp/Facebook scrapers require absolute image URLs, so these cannot be
+     relative. The canonical public address is invitation.dakshsoft.in. For a nicer
+     card, crop a landscape 1200x630 version of the photo and point og:image at it. -->
+<link rel="canonical" href="https://invitation.dakshsoft.in/">
+<meta property="og:url" content="https://invitation.dakshsoft.in/">
 <meta property="og:title" content="You're Invited — Utkarsh Weds Simran ❤️">
 <meta property="og:description" content="A beautiful celebration of love, family and a new beginning.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://YOUR-DOMAIN.com/assets/couple-full.jpg">
+<meta property="og:image" content="https://invitation.dakshsoft.in/assets/couple-full.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1064">
 <meta property="og:image:height" content="1600">
@@ -1188,17 +1187,17 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const VALID=['en','hi','dual'];
 const SANGAM='<svg class="sg" viewBox="0 0 180 44" aria-hidden="true"><path pathLength="1" d="M6 7 C62 9 114 21 174 36"/><path pathLength="1" d="M6 37 C62 35 114 23 174 36"/><path pathLength="1" d="M6 22 C64 22 118 29 174 36"/><circle cx="174" cy="36" r="2.4"/></svg>';
 /* ===== OWNER CONFIG =====
-   TRACK_ENDPOINT: where opens are recorded. GitHub Pages has no server, so the
-                   published site posts to the tracker hosted on wa.dakshsoft.in.
-                   Anywhere else (local preview, the tracker itself) it uses
-                   /api/track on the same origin.
+   TRACK_ENDPOINT: where opens are recorded. The published hosts (GitHub Pages and
+                   invitation.dakshsoft.in) post to the tracker hosted on
+                   wa.dakshsoft.in. Anywhere else (local preview, the tracker
+                   itself) it uses /api/track on the same origin.
    RSVP_ENDPOINT : optional Google Apps Script /exec URL. When set, the same events are
                    also mirrored to that sheet and the RSVP form posts there.
    MUSIC_SRC     : your instrumental track. Empty = use the built-in shehnai synth instead.
    TRACK_OPENS   : log every invitation open (who opened it, when, from where).
    GEO_ON_OPEN   : true asks for GPS the instant the invitation opens. Off by default, so
                    guests are only located if they tap the location chip themselves. */
-const TRACK_ENDPOINT=/\.github\.io$/i.test(location.hostname)?'https://wa.dakshsoft.in/api/track':'';
+const TRACK_ENDPOINT=/\.github\.io$|^invitation\.dakshsoft\.in$/i.test(location.hostname)?'https://wa.dakshsoft.in/api/track':'';
 const RSVP_ENDPOINT='';
 const MUSIC_SRC='assets/wedding-music.mp3';
 const TRACK_OPENS=true;
